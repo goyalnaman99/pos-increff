@@ -1,0 +1,32 @@
+.inline-icon {
+   vertical-align: bottom;
+   font-size: 24px;
+}
+
+.page-heading {
+  font-size: 24px;
+  margin: auto;
+  width: 50%;
+  padding: 10px;
+}
+
+#brand-filter, #productdetails-filter, #inventory-filter {
+  height: 36px;
+}
+
+table {
+  word-wrap:break-word;
+  table-layout: fixed;
+}
+
+.order-modal {
+
+}
+
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+}

@@ -1,0 +1,32 @@
+<!doctype html>
+
+<html lang="en">
+
+<head th:replace="snippets.html :: name_head"></head>
+
+<body>
+
+<nav th:replace="snippets.html :: name_navbar"></nav>
+
+<div class="container">
+<div class="row">
+<div class="col-6">
+ 
+<div class="jumbotron jumbotron-fluid">
+	<div class="container">
+  <p class="display-4">Welcome to a Point of Sale Application</p>
+  <hr class="my-4">
+  <p>This is an application where you can add brands and products, manage their inventories, create customer orders and generate reports</p>
+  <a class="btn btn-primary btn-lg" th:href="@{/ui/brand}" role="button">Get Started</a>
+</div>
+</div>
+
+</div>
+</div>
+</div> <!--Container-->
+
+<footer th:replace="snippets.html :: name_footer"></footer>
+
+</body>
+
+</html>

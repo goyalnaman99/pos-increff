@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="0ba18197-5437-4f8e-bc17-00bd279dcbc2" name="Changes" comment="POS">
+      <change beforePath="$PROJECT_DIR$/.settings/org.eclipse.jdt.core.prefs" beforeDir="false" afterPath="$PROJECT_DIR$/.settings/org.eclipse.jdt.core.prefs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/employee.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/increff/employee/controller/AboutApiController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/increff/employee/controller/AbstractUiController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/increff/employee/controller/AdminApiController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/increff/employee/controller/AppRestControllerAdvice.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/increff/employee/controller/AppUiController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/increff/employee/controller/EmployeeApiController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/increff/employee/controller/InitApiController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/increff/employee/controller/LoginController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/increff/employee/controller/SampleController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/increff/employee/controller/SiteUiController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/increff/employee/dao/AbstractDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/increff/employee/dao/EmployeeDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/increff/employee/dao/EmployeeInMemDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/increff/employee/dao/UserDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/increff/employee/model/AboutAppData.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/increff/employee/model/EmployeeData.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/increff/employee/model/EmployeeForm.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/increff/employee/model/InfoData.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/increff/employee/model/LoginForm.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/increff/employee/model/MessageData.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/increff/employee/model/UserData.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/increff/employee/model/UserForm.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/increff/employee/pojo/EmployeePojo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/increff/employee/pojo/UserPojo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/increff/employee/service/AboutAppService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/increff/employee/service/ApiException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/increff/employee/service/EmployeeService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/increff/employee/service/UserService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/increff/employee/spring/ControllerConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/increff/employee/spring/DbConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/increff/employee/spring/SecurityConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/increff/employee/spring/SpringConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/increff/employee/spring/SpringSecurityInitializer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/increff/employee/spring/WebInitializer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/increff/employee/util/CookieUtil.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/increff/employee/util/IOUtil.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/increff/employee/util/SecurityUtil.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/increff/employee/util/StringUtil.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/increff/employee/util/UserPrincipal.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/increff/employee/employee.tsv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/html/employee.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/html/features.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/html/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/html/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/html/init.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/html/login.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/html/logout.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/html/pricing.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/html/snippets.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/html/user.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/app.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/app.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/employee.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/papaparse.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/user.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/increff/employee/service/AboutAppServiceTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/increff/employee/service/AbstractUnitTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/increff/employee/service/EmployeeServiceTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/increff/employee/service/QaConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/increff/employee/service/SampleTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/com/increff/employee/test.properties" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="JpbToolWindowState">
+    <option name="myId2FirstActivated">
+      <map>
+        <entry key="com.haulmont.jpb.jpaStructure" value="true" />
+      </map>
+    </option>
+    <option name="myId2Visible">
+      <map>
+        <entry key="com.haulmont.jpb.jpaStructure" value="true" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectId" id="23hgq2NgMEdUfkt7G1OZfNhllWk" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="0ba18197-5437-4f8e-bc17-00bd279dcbc2" name="Changes" comment="" />
+      <created>1642191925592</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1642191925592</updated>
+    </task>
+    <task id="LOCAL-00001" summary="POS">
+      <created>1642192100589</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1642192100589</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="POS" />
+    <option name="LAST_COMMIT_MESSAGE" value="POS" />
+  </component>
+</project>
