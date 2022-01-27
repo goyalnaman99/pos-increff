@@ -23,6 +23,7 @@
 					<thead>
 						<tr>
 							<th scope="col">Date-Time</th>
+							<th scope="col">Bill Amount</th>
 							<th scope="col">Actions</th>
 						</tr>
 					</thead>
@@ -34,7 +35,7 @@
 	</div>
 
 	<!-- order Add Modal -->
-	<div class="modal" tabindex="-1" role="dialog" id="add-order-modal" data-backdrop="static">
+	<div class="modal" tabindex="-1" role="dialog" id="add-order-modal">
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
 				<div class="modal-header">
@@ -124,7 +125,7 @@
 						<div class="form-group row">
 							<label for="inputquantity" class="col-sm-2 col-form-label">Quantity</label>
 							<div class="col-sm-10">
-								<input type="text" class="form-control" name="quantity"
+								<input type="number" class="form-control" name="quantity"
 									placeholder="enter quantity" required>
 							</div>
 						</div>
@@ -132,7 +133,7 @@
 							<label for="inputsellingPrice" class="col-sm-2 col-form-label">Selling
 								Price</label>
 							<div class="col-sm-10">
-								<input type="text" class="form-control" name="sellingPrice"
+								<input type="number" class="form-control" name="sellingPrice"
 									placeholder="enter selling price" required>
 							</div>
 						</div>
@@ -141,15 +142,15 @@
 				<div class="modal-footer">
 					<button type="button" class="btn btn-secondary"
 						data-dismiss="modal">Cancel</button>
-					<button type="button" class="btn btn-primary" id="update-orderitem">Update</button>
+					<button type="button" class="btn btn-primary" id="update-orderitem">Submit</button>
 				</div>
 			</div>
 		</div>
 	</div>
 
 	<!-- Order Display Modal -->
-	<div class="modal" tabindex="-1" role="dialog" id="order-display-modal">
-		<div class="modal-dialog" role="document">
+	<div class="modal" tabindex="-1" role="dialog" id="order-display-modal" data-backdrop="static">
+		<div class="modal-dialog modal-lg" role="document">
 			<div class="modal-content">
 				<div class="modal-header">
 					<h5 class="modal-title">Order Item</h5>
@@ -163,8 +164,8 @@
 						<table class="table table-striped" id="orderitem-table">
 							<thead>
 								<tr>
-									<th scope="col">Barcode</th>
 									<th scope="col">Name</th>
+									<th scope="col">Barcode</th>
 									<th scope="col">Quantity</th>
 									<th scope="col">Selling Price</th>
 									<th scope="col">Actions</th>
@@ -181,7 +182,7 @@
 	<!-- Container end-->
 
 	<footer th:replace="snippets.html :: name_footer"></footer>
-	<script th:src="@{/static/order.js}"/>
+	<script th:src="@{/static/order.js}" />
 	</script>
 </body>
 

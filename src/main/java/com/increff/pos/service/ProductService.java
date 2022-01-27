@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.increff.pos.dao.BrandDao;
 import com.increff.pos.dao.InventoryDao;
 import com.increff.pos.dao.ProductDao;
 import com.increff.pos.pojo.BrandPojo;
@@ -17,7 +18,10 @@ public class ProductService {
 
 	@Autowired
 	private ProductDao product_dao;
-
+	
+	@Autowired
+	private BrandDao brand_dao;
+	
 	@Autowired
 	private InventoryDao inventory_dao;
 
@@ -56,12 +60,12 @@ public class ProductService {
 
 	// Update product details
 	@Transactional(rollbackFor = ApiException.class)
-	public void update(int id, ProductPojo p, BrandPojo brand_pojo) throws ApiException {
+	public void update(int id, ProductPojo p) throws ApiException {
 		validate(p);
 		normalize(p);
 		ProductPojo ex = checkIfExists(id);
 		ex.setBarcode(BarcodeUtil.randomString(8));
-		ex.setBrandId(brand_pojo.getId());
+		ex.setBrandId(p.getBrandId());
 		ex.setMrp(p.getMrp());
 		ex.setName(p.getName());
 		product_dao.update(ex);
@@ -101,6 +105,18 @@ public class ProductService {
 		}
 		if (p.getMrp() <= 0) {
 			throw new ApiException("Mrp value should be positive");
+		}
+		boolean flag = false;
+		List<BrandPojo> brandPojo = brand_dao.selectAll();
+		for(BrandPojo pojo : brandPojo)
+		{
+			if(p.getBrandId() == pojo.getId())
+			{
+				flag=true;
+			}
+		}
+		if(flag==false) {
+			throw new ApiException("Brand-Category not found");
 		}
 	}
 }

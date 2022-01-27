@@ -2,25 +2,16 @@ package com.increff.pos.model;
 
 public class ProductForm {
 
-	private String brand;
-	private String category;
+	private int brandId;
 	private String name;
 	private double mrp;
 
-	public String getBrand() {
-		return brand;
+	public int getBrandId() {
+		return brandId;
 	}
 
-	public void setBrand(String brand) {
-		this.brand = brand;
-	}
-
-	public String getCategory() {
-		return category;
-	}
-
-	public void setCategory(String category) {
-		this.category = category;
+	public void setBrandId(int brandId) {
+		this.brandId = brandId;
 	}
 
 	public String getName() {

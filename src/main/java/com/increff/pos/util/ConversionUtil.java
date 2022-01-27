@@ -1,6 +1,7 @@
 package com.increff.pos.util;
 
-import java.time.format.DateTimeFormatter;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,7 +22,7 @@ import com.increff.pos.pojo.ProductPojo;
 import com.increff.pos.service.ApiException;
 
 public class ConversionUtil {
-
+	
 	// BrandForm toBrandPojo
 	public static BrandPojo convert(BrandForm f) {
 		BrandPojo p = new BrandPojo();
@@ -49,11 +50,11 @@ public class ConversionUtil {
 	}
 
 	// toProductPojo
-	public static ProductPojo convert(BrandPojo p, ProductForm f) {
+	public static ProductPojo convert(ProductForm f) {
 		ProductPojo product_pojo = new ProductPojo();
 		product_pojo.setName(f.getName());
 		product_pojo.setMrp(f.getMrp());
-		product_pojo.setBrandId(p.getId());
+		product_pojo.setBrandId(f.getBrandId());
 		return product_pojo;
 	}
 
@@ -64,6 +65,7 @@ public class ConversionUtil {
 		d.setMrp(p.getMrp());
 		d.setName(p.getName());
 		d.setBarcode(p.getBarcode());
+		d.setBrandId(brandPojo.getId());
 		d.setBrand(brandPojo.getBrand());
 		d.setCategory(brandPojo.getCategory());
 		return d;
@@ -100,12 +102,13 @@ public class ConversionUtil {
 	}
 
 	// Convert Order Pojo to Order Data
-	public static OrderData convertOrderPojo(OrderPojo pojo) {
+	public static OrderData convertOrderPojo(OrderPojo pojo, double total) {
 		OrderData d = new OrderData();
 		d.setId(pojo.getId());
-		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
-		String datetime = pojo.getDatetime().format(formatter);
+		DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy hh:mm:ss");  
+		String datetime = dateFormat.format(pojo.getDate());
 		d.setDatetime(datetime);
+		d.setBillAmount(total);
 		return d;
 	}
 
@@ -120,14 +123,5 @@ public class ConversionUtil {
 		d.setSellingPrice(orderItemPojo.getSellingPrice());
 		d.setMrp(productPojo.getMrp());
 		return d;
-	}
-
-	// Convert List of Order Pojos to Data
-	public static List<OrderData> convertOrderList(List<OrderPojo> list) {
-		List<OrderData> list1 = new ArrayList<OrderData>();
-		for (OrderPojo p : list) {
-			list1.add(convertOrderPojo(p));
-		}
-		return list1;
 	}
 }

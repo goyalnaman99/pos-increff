@@ -47,7 +47,8 @@ public class OrderController {
 		}
 		int orderId = orderPojo.getId();
 		orderService.createOrder(orderItemList, orderId);
-		return ConversionUtil.convertOrderPojo(orderPojo);
+		double total = orderService.billTotal(orderId);
+		return ConversionUtil.convertOrderPojo(orderPojo, total);
 	}
 
 	@ApiOperation(value = "Get Order Item details record by id")
@@ -76,7 +77,12 @@ public class OrderController {
 	@RequestMapping(path = "/api/order", method = RequestMethod.GET)
 	public List<OrderData> getAllOrders() {
 		List<OrderPojo> orders_list = orderService.getAllOrders();
-		return ConversionUtil.convertOrderList(orders_list);
+		List<OrderData> list1 = new ArrayList<OrderData>();
+		for (OrderPojo p : orders_list) {
+			double total = orderService.billTotal(p.getId());
+			list1.add(ConversionUtil.convertOrderPojo(p, total));
+		}
+		return list1;
 	}
 
 	@ApiOperation(value = "Get list of Order Items of a particular order")

@@ -1,6 +1,6 @@
 package com.increff.pos.service;
 
-import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,7 +33,7 @@ public class OrderService {
 	@Transactional(rollbackFor = ApiException.class)
 	public OrderPojo add() throws ApiException {
 		OrderPojo orderPojo = new OrderPojo();
-		orderPojo.setDatetime(LocalDateTime.now());
+		orderPojo.setDate(new Date());
 		orderDao.insert(orderPojo);
 		return orderPojo;
 	}
@@ -41,11 +41,9 @@ public class OrderService {
 	// Creating order
 	@Transactional(rollbackFor = ApiException.class)
 	public void createOrder(List<OrderItemPojo> orderItemList, int orderId) throws ApiException {
-		for(OrderItemPojo p : orderItemList)
-		{
+		for (OrderItemPojo p : orderItemList) {
 			ProductPojo productPojo = productService.get(p.getProductId());
-			if(productPojo == null)
-			{
+			if (productPojo == null) {
 				throw new ApiException("Product entered does not exist.");
 			}
 			validate(p);
@@ -73,6 +71,16 @@ public class OrderService {
 	public List<OrderItemPojo> getOrderItems(int order_id) throws ApiException {
 		List<OrderItemPojo> lis = orderItemDao.selectOrder(order_id);
 		return lis;
+	}
+
+	// Calculate Total
+	public double billTotal(int orderId) {
+		double total = 0;
+		List<OrderItemPojo> lis = orderItemDao.selectOrder(orderId);
+		for (OrderItemPojo orderItemPojo : lis) {
+			total += orderItemPojo.getQuantity() * orderItemPojo.getSellingPrice();
+		}
+		return total;
 	}
 
 	// Fetching all order items
@@ -109,8 +117,8 @@ public class OrderService {
 		}
 		orderDao.delete(OrderPojo.class, orderId);
 	}
-	
-	// Updating  order item
+
+	// Updating order item
 	@Transactional(rollbackFor = ApiException.class)
 	public void update(int id, OrderItemPojo p) throws ApiException {
 		validate(p);
@@ -122,7 +130,7 @@ public class OrderService {
 		orderItemDao.update(ex);
 		updateInventory(ex);
 	}
-	
+
 	// Increasing inventory while deleting order
 	private void increaseInventory(OrderItemPojo orderItemPojo) throws ApiException {
 		InventoryPojo inventoryPojo = inventoryService.getByProductId(orderItemPojo.getProductId());
@@ -130,7 +138,7 @@ public class OrderService {
 		inventoryPojo.setQuantity(updatedQuantity);
 		inventoryService.update(inventoryPojo.getId(), inventoryPojo);
 	}
-	
+
 	// To update inventory while adding order
 	private void updateInventory(OrderItemPojo orderItemPojo) throws ApiException {
 		InventoryPojo inventoryPojo = inventoryService.getByProductId(orderItemPojo.getProductId());
@@ -163,10 +171,17 @@ public class OrderService {
 	private void validate(OrderItemPojo p) throws ApiException {
 		if (p.getQuantity() <= 0) {
 			throw new ApiException("Quantity must be positive");
-		}
-		else if(inventoryService.getByProductId(p.getProductId()).getQuantity() < p.getQuantity())
-		{
+		} else if (inventoryService.getByProductId(p.getProductId()).getQuantity() < p.getQuantity()) {
 			throw new ApiException("Order quantity exceeds available quantity");
 		}
+		
+		if(p.getSellingPrice() > p.getMrp())
+		{
+			throw new ApiException("SP can't be greater than MRP");
+		}
+	}
+
+	public List<OrderPojo> getAllBetween(Date startingDate, Date endingDate) {
+		return orderDao.selectBetweenDate(startingDate, endingDate);
 	}
 }

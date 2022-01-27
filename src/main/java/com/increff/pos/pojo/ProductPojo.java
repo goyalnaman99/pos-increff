@@ -59,4 +59,5 @@ public class ProductPojo {
 	public void setBrandId(int brandId) {
 		this.brandId = brandId;
 	}
+
 }

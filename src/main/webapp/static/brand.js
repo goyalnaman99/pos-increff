@@ -22,8 +22,7 @@ function addBrand(event) {
 			getBrandList();
 		},
 		error : function(response) {
-			handleAjaxError
-			toastr.error("Error adding brand/category pair");
+			handleAjaxError(response)
 		}
 	});
 
@@ -52,8 +51,7 @@ function updateBrand(event) {
 			getBrandList();
 		},
 		error : function(response) {
-			handleAjaxError
-			toastr.error("Error making changes");
+			handleAjaxError(response)
 		}
 	});
 
@@ -122,7 +120,7 @@ function uploadRows() {
 			row.error = response.responseText
 			errorData.push(row);
 			uploadRows();
-			toastr.success("File could not be uploaded");
+			toastr.error("File could not be uploaded");
 		}
 	});
 

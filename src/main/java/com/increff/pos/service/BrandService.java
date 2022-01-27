@@ -22,11 +22,10 @@ public class BrandService {
 		validate(p);
 		dao.insert(p);
 	}
-	
+
 	// Adding brand list
 	public void addList(List<BrandPojo> p) throws ApiException {
-		for(BrandPojo brandPojo : p)
-		{
+		for (BrandPojo brandPojo : p) {
 			add(brandPojo);
 		}
 	}
@@ -67,6 +66,11 @@ public class BrandService {
 			throw new ApiException("This brand name and category does not exist " + brand + " " + category);
 		}
 		return pojo;
+	}
+
+	// Getting List of BrandPojos of a particular brand
+	public List<BrandPojo> getbyBrand(String brand) {
+		return dao.selectBrand(brand);
 	}
 
 	// Validation

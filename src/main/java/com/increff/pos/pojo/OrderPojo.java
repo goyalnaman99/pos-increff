@@ -1,6 +1,6 @@
 package com.increff.pos.pojo;
 
-import java.time.LocalDateTime;
+import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -13,9 +13,8 @@ public class OrderPojo {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	private LocalDateTime datetime;
-	//TODO datetime indexing
-	
+	private Date date;
+
 	public int getId() {
 		return id;
 	}
@@ -24,11 +23,12 @@ public class OrderPojo {
 		this.id = id;
 	}
 
-	public LocalDateTime getDatetime() {
-		return datetime;
+	public Date getDate() {
+		return date;
 	}
 
-	public void setDatetime(LocalDateTime datetime) {
-		this.datetime = datetime;
+	public void setDate(Date date) {
+		this.date = date;
 	}
+
 }

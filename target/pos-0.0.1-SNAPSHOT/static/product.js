@@ -4,6 +4,11 @@ function getProductUrl() {
 	return baseUrl + "/api/product";
 }
 
+function getBrandUrl() {
+	var baseUrl = $("meta[name=baseUrl]").attr("content");
+	return baseUrl + "/api/brand";
+}
+
 // BUTTON ACTIONS
 function addProduct(event) {
 
@@ -20,10 +25,11 @@ function addProduct(event) {
 			'Content-Type' : 'application/json'
 		},
 		success : function(response) {
+			$form.trigger("reset");
 			toastr.success("Product Added Successfully");
 			getProductList();
 		},
-		error : function(response){
+		error : function(response) {
 			handleAjaxError
 			toastr.error("Error Adding Product");
 		}
@@ -53,7 +59,7 @@ function updateProduct(event) {
 			toastr.success("Product Updated Successfully");
 			getProductList();
 		},
-		error : function(response){
+		error : function(response) {
 			handleAjaxError
 			toastr.error("Error Updating Product");
 		}
@@ -140,8 +146,8 @@ function displayProductList(data) {
 	$tbody.empty();
 	for ( var i in data) {
 		var e = data[i];
-		var buttonHtml = ' <button type="button" class="btn text-bodye" onclick="displayEditProduct(' + e.id
-				+ ')"><i class="fas fa-edit"></i></button>'
+		var buttonHtml = ' <button type="button" class="btn text-bodye" onclick="displayEditProduct('
+				+ e.id + ')"><i class="fas fa-edit"></i></button>'
 		console.log('brand');
 		var row = '<tr>' + '<td>' + e.barcode + '</td>' + '<td>' + e.brand
 				+ '</td>' + '<td>' + e.category + '</td>' + '<td>' + e.name
@@ -194,12 +200,36 @@ function displayUploadData() {
 }
 
 function displayProduct(data) {
-	$("#product-edit-form input[name=brand]").val(data.brand);
-	$("#product-edit-form input[name=category]").val(data.category);
+	$("#product-edit-form select[name=brandId]").val(data.brandId);
 	$("#product-edit-form input[name=name]").val(data.name);
 	$("#product-edit-form input[name=mrp]").val(data.mrp);
 	$("#product-edit-form input[name=id]").val(data.id);
 	$('#edit-product-modal').modal('toggle');
+}
+
+function addDataToBrandCategoryDropdown(data, formId) {
+	var $brand = $(`${formId} select[name=brandId]`);
+	$brand.empty();
+	$brand.append('<option value="" disabled selected>Select Brand Category</option>');
+	for ( var i in data) {
+		var e = data[i];
+		var option = '<option value="' + e.id + '">' + e.brand + "-"
+				+ e.category + "</option>";
+		$brand.append(option);
+	}
+}
+
+function populateBrandCategoryDropDown() {
+	var url = getBrandUrl();
+	$.ajax({
+		url : url,
+		type : "GET",
+		success : function(data) {
+			addDataToBrandCategoryDropdown(data, "#product-form");
+			addDataToBrandCategoryDropdown(data, "#product-edit-form");
+		},
+		error : handleAjaxError,
+	});
 }
 
 // INITIALIZATION CODE
@@ -215,3 +245,4 @@ function init() {
 
 $(document).ready(init);
 $(document).ready(getProductList);
+$(document).ready(populateBrandCategoryDropDown);

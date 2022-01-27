@@ -17,7 +17,7 @@ function addOrderItem(event) {
 function cancelOrder(event) {
 	order = [];
 	toastr.warning("Cart Cleared");
-	$("#orderitemadd-table tr").remove(); 
+	$("#orderitemadd-table tr").remove();
 }
 function addOrder(event) {
 	var url = getOrderUrl();
@@ -34,14 +34,13 @@ function addOrder(event) {
 			order = [];
 			getOrderList();
 			toastr.success("Order Created Successfully");
-			
+
 		},
 		error : function(response) {
-			handleAjaxError
-			toastr.error("Error Creating Order");
+			handleAjaxError(response)
 		}
 	});
-	$("#orderitemadd-table tr").remove(); 
+	$("#orderitemadd-table tr").remove();
 	return false;
 }
 
@@ -67,14 +66,12 @@ function updateOrderItem(event) {
 			getBrandList();
 		},
 		error : function(response) {
-			handleAjaxError
-			toastr.error("Error making changes");
+			handleAjaxError(response)
 		}
 	});
 
 	return false;
 }
-
 
 function getOrderList() {
 	console.log("getting order list");
@@ -116,8 +113,7 @@ function deleteOrderItem(id) {
 			toastr.success("Order Item Deleted Successfully");
 		},
 		error : function(response) {
-			handleAjaxError
-			toastr.error("Error Deleting Order Item");
+			handleAjaxError(response)
 		}
 	});
 }
@@ -133,8 +129,7 @@ function deleteOrder(id) {
 			getOrderList(id);
 		},
 		error : function(reponse) {
-			handleAjaxError
-			toastr.error("Error Deleting Order");
+			handleAjaxError(response)
 		}
 	});
 }
@@ -150,7 +145,7 @@ function displayOrderList(data) {
 				+ e.id + ')"><i class="fas fa-info-circle"></i></button>'
 		buttonHtml += ' <button type="button" class="btn text-bodye" onclick="deleteOrder('
 				+ e.id + ')"><i class="fas fa-trash-alt"></i></button>'
-		var row = '<tr>' + '<td>' + e.datetime + '</td>' + '<td>' + buttonHtml
+		var row = '<tr>' + '<td>' + e.datetime + '</td>'+ '<td>' + e.billAmount + '</td>' + '<td>' + buttonHtml
 				+ '</td>' + '</tr>';
 		$tbody.append(row);
 	}
@@ -163,15 +158,26 @@ function displayOrderItem(data) {
 		var e = data[i];
 		var buttonHtml = ' <button type="button" class="btn text-bodye" onclick="deleteOrderItem('
 				+ e.id + ')"><i class="fas fa-trash-alt"></i></button>'
-				buttonHtml += ' <button type="button" class="btn text-bodye" onclick="displayEditOrderItem(' + e.id
-				+ ')"><i class="fas fa-edit"></i></button>'
-		var row = '<tr>' + '<td>' + e.barcode + '</td>' + '<td>' + e.name
+		buttonHtml += ' <button type="button" class="btn text-bodye" onclick="displayEditOrderItem('
+				+ e.id + ')"><i class="fas fa-edit"></i></button>'
+		var row = '<tr>' + '<td>' + e.name + '</td>' + '<td>' + e.barcode
 				+ '</td>' + '<td>' + e.quantity + '</td>' + '<td>'
 				+ e.sellingPrice + '</td>' + '<td>' + buttonHtml + '</td>'
 				+ '</tr>';
 		$tbody.append(row);
 	}
 	$('#order-display-modal').modal('toggle');
+}
+
+function displayOrderItemListAdd(data) {
+	var $tbody = $('#orderitemadd-table').find('tbody');
+	$tbody.empty();
+	for ( var i in data) {
+		var e = data[i];
+		var row = '<tr>' + '<td>' + e.barcode + '</td>' + '<td>' + e.quantity
+				+ '</td>' + '<td>' + e.sellingPrice + '</td>' + '</tr>';
+		$tbody.append(row);
+	}
 }
 
 function displayEditOrderItem(id) {
@@ -186,21 +192,10 @@ function displayEditOrderItem(id) {
 	});
 }
 
-function displayOrderItemListAdd(data) {
-	var $tbody = $('#orderitemadd-table').find('tbody');
-	$tbody.empty();
-	for ( var i in data) {
-		var e = data[i];
-		var row = '<tr>' + '<td>' + e.barcode + '</td>' + '<td>' + e.quantity
-				+ '</td>' + '<td>' + e.sellingPrice + '</td>' + '</tr>';
-		$tbody.append(row);
-	}
-}
-
 function displayOrderItemEdit(data) {
 	$("#order-edit-form input[name=barcode]").val(data.barcode);
-	$("#brand-edit-form input[name=quantity]").val(data.quantity);
-	$("#brand-edit-form input[name=sellingPrice]").val(data.sellingPrice);
+	$("#order-edit-form input[name=quantity]").val(data.quantity);
+	$("#order-edit-form input[name=sellingPrice]").val(data.mrp);
 	$('#edit-orderitem-modal').modal('toggle');
 }
 // INITIALIZATION CODE

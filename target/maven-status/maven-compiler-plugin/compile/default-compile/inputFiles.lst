@@ -36,6 +36,7 @@ E:\Work\Repos\pos-increff\src\main\java\com\increff\pos\controller\BrandControll
 E:\Work\Repos\pos-increff\src\main\java\com\increff\pos\model\OrderData.java
 E:\Work\Repos\pos-increff\src\main\java\com\increff\pos\controller\UIController.java
 E:\Work\Repos\pos-increff\src\main\java\com\increff\pos\model\OrderItemData.java
+E:\Work\Repos\pos-increff\src\main\java\com\increff\pos\model\SalesReportData.java
 E:\Work\Repos\pos-increff\src\main\java\com\increff\pos\dao\OrderDao.java
 E:\Work\Repos\pos-increff\src\main\java\com\increff\pos\model\InventoryForm.java
 E:\Work\Repos\pos-increff\src\main\java\com\increff\pos\model\InvoiceData.java

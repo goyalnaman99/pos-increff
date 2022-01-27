@@ -22,8 +22,7 @@ function addInventory(event) {
 			getInventoryList();
 		},
 		error : function(response){
-			handleAjaxError
-			toastr.error("Error Adding Inventory");
+			handleAjaxError(response)
 		}
 	});
 
@@ -52,8 +51,7 @@ function updateInventory(event) {
 			getInventoryList();
 		},
 		error : function(response){
-			handleAjaxError
-			toastr.error("Error Updating Inventory");
+			handleAjaxError(response)
 		}
 	});
 

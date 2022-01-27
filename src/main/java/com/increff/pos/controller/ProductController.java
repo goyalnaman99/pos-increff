@@ -35,8 +35,7 @@ public class ProductController {
 	@ApiOperation(value = "Add Product Details")
 	@RequestMapping(path = "/api/product", method = RequestMethod.POST)
 	public void add(@RequestBody ProductForm form) throws ApiException{
-		BrandPojo brand_pojo = brand_service.getBrandCategory(form.getBrand(), form.getCategory());
-		ProductPojo product_pojo = ConversionUtil.convert(brand_pojo, form);
+		ProductPojo product_pojo = ConversionUtil.convert(form);
 		product_service.add(product_pojo);
 	}
 	
@@ -64,8 +63,7 @@ public class ProductController {
 	@ApiOperation(value = "Update a Product record")
 	@RequestMapping(path = "/api/product/{id}", method = RequestMethod.PUT)
 	public void update(@PathVariable int id, @RequestBody ProductForm form) throws ApiException {
-		BrandPojo brand_pojo = brand_service.getBrandCategory(form.getBrand(), form.getCategory());
-		ProductPojo product_pojo = ConversionUtil.convert(brand_pojo,form);
-		product_service.update(id, product_pojo, brand_pojo);
+		ProductPojo product_pojo = ConversionUtil.convert(form);
+		product_service.update(id, product_pojo);
 	}
 }

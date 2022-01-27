@@ -86,11 +86,6 @@ function processData() {
 
 function readFileDataCallback(results) {
 	fileData = results.data;
-	if(fileData.length > 5000)
-	{
-		toastr.error("File Contains more than 5000 rows!);
-		return;
-	}
 	uploadRows();
 }
 
