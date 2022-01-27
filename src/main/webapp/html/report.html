@@ -1,0 +1,66 @@
+<!doctype html>
+
+<html lang="en">
+
+<head th:replace="snippets.html :: name_head"></head>
+
+<body>
+
+	<nav th:replace="snippets.html :: name_navbar"></nav>
+
+	<div class="container">
+
+		<h3>Sales Report</h3>
+		<!-- Blank Row -->
+
+		<div class="container-fluid">
+			<form id="filter-form">
+				<div class="form-row">
+					<div class="form-group col-md-4">
+						<label for="inputBrand" class="required">Brand</label> <select
+							class="form-control" name="brand" id="inputBrand" required
+							placeholder="Select Brand">
+						</select>
+					</div>
+					<div class="form-group col-md-4">
+						<label for="inputBarcode">Starting Date</label> <input
+							id="startingdatepicker" name="startDate" required />
+					</div>
+					<div class="form-group col-md-4">
+						<label for="inputQuantity">Ending Date</label> <input
+							id="endingdatepicker" name="endDate" required />
+					</div>
+					<button type="submit" class="btn btn-primary" id="refresh-data">Generate</button>
+				</div>
+			</form>
+		</div>
+
+		<div class="row">&nbsp;</div>
+
+		<div class="row">
+			<!-- Table -->
+			<div class="col-12">
+				<table class="table table-striped" id="sales-report-table">
+					<thead>
+						<tr>
+							<th scope="col">Category</th>
+							<th scope="col">Quantity</th>
+							<th scope="col">Revenue</th>
+						</tr>
+					</thead>
+					<tbody>
+					</tbody>
+				</table>
+
+			</div>
+		</div>
+	</div>
+	<!-- Container end-->
+
+	<footer th:replace="snippets.html :: name_footer"></footer>
+	<script th:src="@{/static/report.js}" />
+	</script>
+
+</body>
+
+</html>

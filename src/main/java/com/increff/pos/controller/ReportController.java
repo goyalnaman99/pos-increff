@@ -1,6 +1,5 @@
 package com.increff.pos.controller;
 
-import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,8 +25,8 @@ public class ReportController {
 	@ApiOperation(value = "Get sales detail of brandcategory")
 	@RequestMapping(path = "api/reports/sales", method = RequestMethod.GET)
 	public List<SalesReportData> getSalesReport(@RequestParam String brand,
-			@RequestParam Date startDate,
-			@RequestParam Date endDate) throws ApiException
+			@RequestParam String startDate,
+			@RequestParam String endDate) throws ApiException
 
 	{
 		System.out.println(startDate);

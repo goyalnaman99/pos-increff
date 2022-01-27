@@ -28,8 +28,10 @@ public class ReportService {
 
 	// Sales Report
 	@Transactional
-	public List<SalesReportData> getCategoryWiseSalesReport(String brand, Date startDate, Date endDate)
+	public List<SalesReportData> getCategoryWiseSalesReport(String brand, String startingDate, String endingDate)
 			throws ApiException {
+		Date startDate = new Date(startingDate);
+		Date endDate = new Date(endingDate);
 		List<SalesReportData> salesReportData = new ArrayList<SalesReportData>();
 		
 		//Getting BrandPojos by brand name

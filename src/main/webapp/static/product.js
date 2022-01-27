@@ -147,8 +147,8 @@ function displayProductList(data) {
 		var buttonHtml = ' <button type="button" class="btn text-bodye" onclick="displayEditProduct('
 				+ e.id + ')"><i class="fas fa-edit"></i></button>'
 		console.log('brand');
-		var row = '<tr>' + '<td>' + e.barcode + '</td>' + '<td>' + e.brand
-				+ '</td>' + '<td>' + e.category + '</td>' + '<td>' + e.name
+		var row = '<tr>' + '<td>' + e.name + '</td>' + '<td>' + e.brand
+				+ '</td>' + '<td>' + e.category + '</td>' + '<td>' + e.barcode
 				+ '</td>' + '<td>' + parseFloat(e.mrp).toFixed(2) + '</td>'
 				+ '<td>' + buttonHtml + '</td>' + '</tr>';
 		$tbody.append(row);

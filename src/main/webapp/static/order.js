@@ -7,12 +7,12 @@ function getOrderUrl() {
 var order = [];
 function addOrderItem(event) {
 	var $form = $("#order-add-form");
+	$("#order-add-form input[name=barcode]").onblur = function() {populateOnBlur()};
 	var json = toJson($form);
 	order.push(JSON.parse(json));
 	toastr.success("Order Item Added to Cart");
 	console.log(order);
 	displayOrderItemListAdd(order);
-
 }
 function cancelOrder(event) {
 	order = [];
@@ -45,9 +45,10 @@ function addOrder(event) {
 }
 
 function updateOrderItem(event) {
-	$('#edit-orderitem-modal').modal('toggle');
+	$('#edit-orderitem-modal').modal('hide');
 	// Get the ID
 	var id = $("#order-edit-form input[name=id]").val();
+	var orderId = $("#order-edit-form input[name=orderId]").val();
 	var url = getOrderUrl() + "/item/" + id;
 
 	// Set the values to update
@@ -63,10 +64,12 @@ function updateOrderItem(event) {
 		},
 		success : function(response) {
 			toastr.success("Changes Implemented Successfully");
-			getBrandList();
+			getOrderItemList(orderId);
+			getOrderList();
 		},
 		error : function(response) {
 			handleAjaxError(response)
+			getOrderItemList(orderId);
 		}
 	});
 
@@ -118,22 +121,6 @@ function deleteOrderItem(id) {
 	});
 }
 
-function deleteOrder(id) {
-	var url = getOrderUrl() + "/" + id;
-
-	$.ajax({
-		url : url,
-		type : 'DELETE',
-		success : function(data) {
-			toastr.success("Order Deleted Successfully");
-			getOrderList(id);
-		},
-		error : function(reponse) {
-			handleAjaxError(response)
-		}
-	});
-}
-
 // UI DISPLAY METHODS
 
 function displayOrderList(data) {
@@ -143,8 +130,6 @@ function displayOrderList(data) {
 		var e = data[i];
 		var buttonHtml = ' <button type="button" class="btn text-bodye" onclick="getOrderItemList('
 				+ e.id + ')"><i class="fas fa-info-circle"></i></button>'
-		buttonHtml += ' <button type="button" class="btn text-bodye" onclick="deleteOrder('
-				+ e.id + ')"><i class="fas fa-trash-alt"></i></button>'
 		var row = '<tr>' + '<td>' + e.datetime + '</td>'+ '<td>' + e.billAmount + '</td>' + '<td>' + buttonHtml
 				+ '</td>' + '</tr>';
 		$tbody.append(row);
@@ -181,6 +166,7 @@ function displayOrderItemListAdd(data) {
 }
 
 function displayEditOrderItem(id) {
+	$('#order-display-modal').modal('hide');
 	var url = getOrderUrl() + "/item/" + id;
 	$.ajax({
 		url : url,
@@ -196,13 +182,20 @@ function displayOrderItemEdit(data) {
 	$("#order-edit-form input[name=barcode]").val(data.barcode);
 	$("#order-edit-form input[name=quantity]").val(data.quantity);
 	$("#order-edit-form input[name=sellingPrice]").val(data.mrp);
+	$("#order-edit-form input[name=id]").val(data.id);
+	$("#order-edit-form input[name=orderId]").val(data.orderId);
 	$('#edit-orderitem-modal').modal('toggle');
+}
+
+function populateOnBlur(){
+	$("#order-add-form input[name=quantity]").val(data.quantity);
+	$("#order-add-form input[name=sellingPrice]").val(data.mrp);
 }
 // INITIALIZATION CODE
 function init() {
 	$('#add-order').click(addOrderItem)
-	$('#cancel-order').click(cancelOrder)
 	$('#update-orderitem').click(updateOrderItem);
+	$('#cancel-order').click(cancelOrder)
 	$('#submit-order').click(addOrder)
 	$('#refresh-data').click(getOrderList);
 }
