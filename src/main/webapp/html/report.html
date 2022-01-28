@@ -8,36 +8,45 @@
 
 	<nav th:replace="snippets.html :: name_navbar"></nav>
 
-	<div class="container">
+	<div class="container-fluid">
 
 		<h3>Sales Report</h3>
-		<!-- Blank Row -->
 
-		<div class="container-fluid">
-			<form id="filter-form">
-				<div class="form-row">
-					<div class="form-group col-md-4">
-						<label for="inputBrand" class="required">Brand</label> <select
-							class="form-control" name="brand" id="inputBrand" required
-							placeholder="Select Brand">
-						</select>
+		<!-- Top row with form-->
+		<div class="row">
+			<div class="col-12">
+				<form class="form-inline" id="filter-form">
+					<div class="form-group">
+						<label for="inputBrand" class="col-sm-2 col-form-label required">Brand</label>
+						<div class="col-sm-10">
+							<select class="form-control" name="brand" id="inputBrand"
+								required placeholder="Select Brand">
+							</select>
+						</div>
 					</div>
-					<div class="form-group col-md-4">
-						<label for="inputBarcode">Starting Date</label> <input
-							id="startingdatepicker" name="startDate" required />
+					<div class="form-group">
+						<label for="inputBarcode" class="col-sm-2 col-form-label">Starting
+							Date</label>
+						<div class="col-sm-10">
+							<input id="startingdatepicker" name="startDate" required />
+						</div>
 					</div>
-					<div class="form-group col-md-4">
-						<label for="inputQuantity">Ending Date</label> <input
-							id="endingdatepicker" name="endDate" required />
+					<div class="form-group">
+						<label for="inputQuantity" class="col-sm-2 col-form-label">Ending
+							Date</label>
+						<div class="col-sm-10">
+							<input id="endingdatepicker" name="endDate" required />
+						</div>
 					</div>
 					<button type="submit" class="btn btn-primary" id="refresh-data">Generate</button>
-				</div>
-			</form>
+					&nbsp;
+				</form>
+			</div>
 		</div>
 
 		<div class="row">&nbsp;</div>
-
 		<div class="row">
+		
 			<!-- Table -->
 			<div class="col-12">
 				<table class="table table-striped" id="sales-report-table">
@@ -51,6 +60,9 @@
 					<tbody>
 					</tbody>
 				</table>
+				<button id="export" class="btn btn-primary" data-export="export">
+					Download CSV <i class="fa fa-download"></i>
+				</button>
 
 			</div>
 		</div>

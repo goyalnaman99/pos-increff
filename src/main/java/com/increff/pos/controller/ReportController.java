@@ -29,8 +29,6 @@ public class ReportController {
 			@RequestParam String endDate) throws ApiException
 
 	{
-		System.out.println(startDate);
-		System.out.println(endDate);
 		return service.getCategoryWiseSalesReport(brand, startDate, endDate);
 	}
 }
