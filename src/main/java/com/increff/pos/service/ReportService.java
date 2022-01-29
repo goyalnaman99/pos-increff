@@ -32,6 +32,9 @@ public class ReportService {
 			throws ApiException {
 		Date startDate = new Date(startingDate);
 		Date endDate = new Date(endingDate);
+		endDate.setHours(23);
+		endDate.setMinutes(59);
+		endDate.setSeconds(59);
 		List<SalesReportData> salesReportData = new ArrayList<SalesReportData>();
 		
 		//Getting BrandPojos by brand name

@@ -6,7 +6,7 @@ function getBrandUrl() {
 // BUTTON ACTIONS
 function addBrand(event) {
 	// Set the values to update
-	var $form = $("#brand-form");
+	var $form = $("#brand-add-form");
 	var json = toJson($form);
 	var url = getBrandUrl();
 	console.log(json);
@@ -19,6 +19,7 @@ function addBrand(event) {
 		},
 		success : function(response) {
 			toastr.success("Brand Added Successfully");
+			$('#add-brand-modal').modal('toggle');
 			getBrandList();
 		},
 		error : function(response) {
@@ -188,6 +189,11 @@ function displayUploadData() {
 	$('#upload-brand-modal').modal('toggle');
 }
 
+function displayAddData() {
+	$("#brand-add-form").trigger('reset');
+	$('#add-brand-modal').modal('toggle');
+}
+
 function displayBrand(data) {
 	$("#brand-edit-form input[name=brand]").val(data.brand);
 	$("#brand-edit-form input[name=category]").val(data.category);
@@ -197,7 +203,8 @@ function displayBrand(data) {
 
 // INITIALIZATION CODE
 function init() {
-	$('#add-brand').click(addBrand);
+	$('#add-brand').click(displayAddData);
+	$('#submit-add-brand').click(addBrand);
 	$('#update-brand').click(updateBrand);
 	$('#refresh-data').click(getBrandList);
 	$('#upload-data').click(displayUploadData);

@@ -130,7 +130,7 @@ function displayOrderList(data) {
 		var e = data[i];
 		var buttonHtml = ' <button type="button" class="btn text-bodye" onclick="getOrderItemList('
 				+ e.id + ')"><i class="fas fa-info-circle"></i></button>'
-		var row = '<tr>' + '<td>' + e.datetime + '</td>'+ '<td>' + e.billAmount + '</td>' + '<td>' + buttonHtml
+		var row = '<tr>' + '<td>' + e.id + '</td>' + '<td>' + e.datetime + '</td>'+ '<td>' + e.billAmount + '</td>' + '<td>' + buttonHtml
 				+ '</td>' + '</tr>';
 		$tbody.append(row);
 	}

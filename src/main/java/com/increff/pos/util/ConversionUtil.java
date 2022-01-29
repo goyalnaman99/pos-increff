@@ -105,7 +105,7 @@ public class ConversionUtil {
 	public static OrderData convertOrderPojo(OrderPojo pojo, double total) {
 		OrderData d = new OrderData();
 		d.setId(pojo.getId());
-		DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy hh:mm:ss");  
+		DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");  
 		String datetime = dateFormat.format(pojo.getDate());
 		d.setDatetime(datetime);
 		d.setBillAmount(total);

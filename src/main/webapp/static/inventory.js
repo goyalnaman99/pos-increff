@@ -6,7 +6,7 @@ function getInventoryUrl() {
 // BUTTON ACTIONS
 function addInventory(event) {
 	// Set the values to update
-	var $form = $("#inventory-form");
+	var $form = $("#inventory-add-form");
 	var json = toJson($form);
 	var url = getInventoryUrl();
 	console.log(json);
@@ -19,6 +19,7 @@ function addInventory(event) {
 		},
 		success : function(response) {
 			toastr.success("Inventory Added Successfully");
+			$('#add-inventory-modal').modal('toggle');
 			getInventoryList();
 		},
 		error : function(response){
@@ -150,8 +151,8 @@ function displayInventoryList(data) {
 		var e = data[i];
 		var buttonHtml = ' <button type="button" class="btn text-bodye" onclick="displayEditInventory(' + e.id
 				+ ')"><i class="fas fa-edit"></button>'
-		var row = '<tr>' + '<td>' + e.barcode + '</td>'
-				+ '<td>' + e.name + '</td>' + '<td>' + e.quantity + '</td>' + '<td>' + buttonHtml + '</td>'
+		var row = '<tr>' + '<td>' + e.name + '</td>'
+				+ '<td>' + e.barcode + '</td>' + '<td>' + e.quantity + '</td>' + '<td>' + buttonHtml + '</td>'
 				+ '</tr>';
 		$tbody.append(row);
 	}
@@ -199,6 +200,11 @@ function displayUploadData() {
 	$('#upload-inventory-modal').modal('toggle');
 }
 
+function displayAddData() {
+	$("#inventory-add-form").trigger('reset');
+	$('#add-inventory-modal').modal('toggle');
+}
+
 function displayInventory(data) {
 	$("#inventory-edit-form input[name=id]").val(data.id);
 	$("#inventory-edit-form input[name=barcode]").val(data.barcode);
@@ -209,7 +215,8 @@ function displayInventory(data) {
 
 // INITIALIZATION CODE
 function init() {
-	$('#add-inventory').click(addInventory);
+	$('#add-inventory').click(displayAddData);
+	$('#submit-add-inventory').click(addInventory);
 	$('#update-inventory').click(updateInventory);
 	$('#refresh-data').click(getInventoryList);
 	$('#upload-data').click(displayUploadData);

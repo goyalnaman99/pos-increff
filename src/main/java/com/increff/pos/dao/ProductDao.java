@@ -10,10 +10,10 @@ import com.increff.pos.pojo.ProductPojo;
 
 @Repository
 public class ProductDao extends AbstractDao {
-
 	// Select product using barcode
 	public ProductPojo select(String barcode) {
-		TypedQuery<ProductPojo> query = getQuery("select p from ProductPojo p where barcode=:barcode", ProductPojo.class);
+		TypedQuery<ProductPojo> query = getQuery("select p from ProductPojo p where barcode=:barcode",
+				ProductPojo.class);
 		query.setParameter("barcode", barcode);
 		List<ProductPojo> list = query.getResultList();
 		if (list.size() > 0) {
@@ -22,10 +22,10 @@ public class ProductDao extends AbstractDao {
 		} else
 			return null;
 	}
-	
-	//Select all products
+
+	// Select all products
 	public List<ProductPojo> selectAll() {
-		TypedQuery<ProductPojo> query = getQuery("select p from ProductPojo p", ProductPojo.class);
+		TypedQuery<ProductPojo> query = getQuery("select p from ProductPojo p order by p.name", ProductPojo.class);
 		return query.getResultList();
 	}
 }

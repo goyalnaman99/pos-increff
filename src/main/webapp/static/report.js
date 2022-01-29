@@ -75,11 +75,15 @@ function init() {
 				uiLibrary : 'bootstrap4',
 				showOnFocus : true,
 				showRightIcon : true,
+				minDate : function() {
+					return $("#startingdatepicker").val();
+				},
 				maxDate : function() {
 					var date = new Date();
-					date.setDate(date.getDate() + 1);
+					date.setDate(date.getDate());
 					return new Date(date.getFullYear(), date.getMonth(), date
 							.getDate());
+					console.log(date);
 				}
 			});
 	// Set ending date as today's date
