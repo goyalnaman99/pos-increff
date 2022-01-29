@@ -8,50 +8,42 @@
 
 	<nav th:replace="snippets.html :: name_navbar"></nav>
 
-	<div class="container">
+	<div class="container-fluid">
 
 		<h3>Sales Report</h3>
 
 		<!-- Top row with form-->
-		<div class="row">
-			<div class="col-12">
-				<form class="form-inline" id="filter-form">
-					<div class="form-group">
-						<label for="inputBrand" class="col-sm-2 col-form-label required">Brand</label>
-						<div class="col-sm-10">
-							<select class="form-control" name="brand" id="inputBrand"
-								required placeholder="Select Brand">
-							</select>
-						</div>
-					</div>
-					<div class="form-group">
-						<label for="inputBarcode" class="col-sm-2 col-form-label">Starting
-							Date</label>
-						<div class="col-sm-10">
-							<input id="startingdatepicker" name="startDate" required />
-						</div>
-					</div>
-					<div class="form-group">
-						<label for="inputQuantity" class="col-sm-2 col-form-label">Ending
-							Date</label>
-						<div class="col-sm-10">
-							<input id="endingdatepicker" name="endDate" required />
-						</div>
-					</div>
-					<button type="submit" class="btn btn-primary" id="refresh-data">Generate</button>
-					&nbsp;
-				</form>
+		<form id="filter-form">
+			<div class="row">
+				<div class="form-group col-md-6 col-lg-3">
+					<label for="inputBrand" class="col-form-label">Brand</label> <select
+						class="form-control" name="brand" id="inputBrand" required
+						placeholder="Select Brand">
+					</select>
+				</div>
+				<div class="form-group col-md-6 col-lg-3">
+					<label for="inputBarcode" class="col-form-label">Start Date</label>
+					<input id="startingdatepicker" name="startDate" required />
+				</div>
+				<div class="form-group col-md-6 col-lg-3">
+					<label for="inputQuantity" class="col-form-label">End Date</label>
+					<input id="endingdatepicker" name="endDate" required />
+				</div>
+				<div class="form-group col-md-6 col-lg-3 mt-auto">
+					<button type="submit" class="btn btn-sm btn-outline-primary" id="refresh-data">Generate</button>
+				</div>
 			</div>
-		</div>
+		</form>
 
 		<div class="row">&nbsp;</div>
+
 		<div class="row">
-		
 			<!-- Table -->
 			<div class="col-12">
 				<table class="table table-striped" id="sales-report-table">
 					<thead>
 						<tr>
+							<th scope="col">Brand</th>
 							<th scope="col">Category</th>
 							<th scope="col">Quantity</th>
 							<th scope="col">Revenue</th>
@@ -60,10 +52,9 @@
 					<tbody>
 					</tbody>
 				</table>
-				<button id="export" class="btn btn-primary" data-export="export">
+				<button id="export" class="btn btn-sm btn-outline-primary" data-export="export">
 					Download CSV <i class="fa fa-download"></i>
 				</button>
-
 			</div>
 		</div>
 	</div>

@@ -30,7 +30,7 @@ function displaySalesReportList(data) {
 	$tbody.empty();
 	for ( var i in data) {
 		var e = data[i];
-		var row = "<tr>" + "<td>" + e.category + "</td>" + "<td>" + e.quantity
+		var row = "<tr>" + "<td>" + e.brand + "</td>" + "<td>" + e.category + "</td>" + "<td>" + e.quantity
 				+ "</td>" + "<td>" + e.revenue + "</td>" + "</tr>";
 		$tbody.append(row);
 	}

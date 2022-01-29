@@ -145,7 +145,7 @@ function displayProductList(data) {
 	for ( var i in data) {
 		var e = data[i];
 		var buttonHtml = ' <button type="button" class="btn text-bodye" onclick="displayEditProduct('
-				+ e.id + ')"><i class="fas fa-edit"></i></button>'
+				+ e.id + ')"><i class="fas fa-pencil-alt"></i></button>'
 		console.log('brand');
 		var row = '<tr>' + '<td>' + e.name + '</td>' + '<td>' + e.brand
 				+ '</td>' + '<td>' + e.category + '</td>' + '<td>' + e.barcode

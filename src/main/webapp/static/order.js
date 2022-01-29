@@ -144,7 +144,7 @@ function displayOrderItem(data) {
 		var buttonHtml = ' <button type="button" class="btn text-bodye" onclick="deleteOrderItem('
 				+ e.id + ')"><i class="fas fa-trash-alt"></i></button>'
 		buttonHtml += ' <button type="button" class="btn text-bodye" onclick="displayEditOrderItem('
-				+ e.id + ')"><i class="fas fa-edit"></i></button>'
+				+ e.id + ')"><i class="fas fa-pencil-alt"></i></button>'
 		var row = '<tr>' + '<td>' + e.name + '</td>' + '<td>' + e.barcode
 				+ '</td>' + '<td>' + e.quantity + '</td>' + '<td>'
 				+ e.sellingPrice + '</td>' + '<td>' + buttonHtml + '</td>'
