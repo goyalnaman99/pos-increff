@@ -20,7 +20,7 @@ public class InventoryDao extends AbstractDao {
 	
 	//Select All Inventory Pojos
 	public List<InventoryPojo> selectAll(){
-		TypedQuery<InventoryPojo> query = getQuery("select p from InventoryPojo p order by p.name", InventoryPojo.class);
+		TypedQuery<InventoryPojo> query = getQuery("select p from InventoryPojo p", InventoryPojo.class);
 		return query.getResultList();
 	}
 }
