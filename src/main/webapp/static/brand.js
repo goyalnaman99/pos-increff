@@ -1,3 +1,4 @@
+var no = 0;
 function getBrandUrl() {
 	var baseUrl = $("meta[name=baseUrl]").attr("content")
 	return baseUrl + "/api/brand";
@@ -140,7 +141,7 @@ function displayBrandList(data) {
 		var e = data[i];
 		var buttonHtml = ' <button type="button" class="btn text-bodye" onclick="displayEditBrand(' + e.id
 				+ ')"><i class="fas fa-pencil-alt"></i></button>'
-		var row = '<tr>' + '<td>' + e.brand + '</td>'
+		var row = '<tr>' + '<td>' + ++no + '</td>' + '<td>' + e.brand + '</td>'
 				+ '<td>' + e.category + '</td>' + '<td>' + buttonHtml + '</td>'
 				+ '</tr>';
 		$tbody.append(row);

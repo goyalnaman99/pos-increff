@@ -1,3 +1,4 @@
+var no = 0;
 function getProductUrl() {
 	var baseUrl = $("meta[name=baseUrl]").attr("content");
 	console.log(baseUrl);
@@ -147,7 +148,7 @@ function displayProductList(data) {
 		var buttonHtml = ' <button type="button" class="btn text-bodye" onclick="displayEditProduct('
 				+ e.id + ')"><i class="fas fa-pencil-alt"></i></button>'
 		console.log('brand');
-		var row = '<tr>' + '<td>' + e.name + '</td>' + '<td>' + e.brand
+		var row = '<tr>' + '<td>' + ++no + '</td>'+ '<td>' + e.name + '</td>' + '<td>' + e.brand
 				+ '</td>' + '<td>' + e.category + '</td>' + '<td>' + e.barcode
 				+ '</td>' + '<td>' + parseFloat(e.mrp).toFixed(2) + '</td>'
 				+ '<td>' + buttonHtml + '</td>' + '</tr>';

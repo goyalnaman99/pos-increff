@@ -1,3 +1,4 @@
+var no = 0;
 function getInventoryUrl() {
 	var baseUrl = $("meta[name=baseUrl]").attr("content")
 	return baseUrl + "/api/inventory";
@@ -151,7 +152,7 @@ function displayInventoryList(data) {
 		var e = data[i];
 		var buttonHtml = ' <button type="button" class="btn text-bodye" onclick="displayEditInventory(' + e.id
 				+ ')"><i class="fas fa-pencil-alt"></i></button>'
-		var row = '<tr>' + '<td>' + e.name + '</td>'
+		var row = '<tr>' + '<td>' + ++no + '</td>' + '<td>' + e.name + '</td>'
 				+ '<td>' + e.barcode + '</td>' + '<td>' + e.quantity + '</td>' + '<td>' + buttonHtml + '</td>'
 				+ '</tr>';
 		$tbody.append(row);
@@ -207,8 +208,10 @@ function displayAddData() {
 
 function displayInventory(data) {
 	$("#inventory-edit-form input[name=id]").val(data.id);
-	$("#inventory-edit-form input[name=barcode]").val(data.barcode);
+	$("#barcode").html("" + data.barcode);
+	$("#name").html("" + data.name);
 	$("#inventory-edit-form input[name=name]").val(data.name);
+	$("#inventory-edit-form input[name=barcode]").val(data.barcode);
 	$("#inventory-edit-form input[name=quantity]").val(data.quantity);
 	$('#edit-inventory-modal').modal('toggle');
 }

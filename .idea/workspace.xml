@@ -5,69 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0ba18197-5437-4f8e-bc17-00bd279dcbc2" name="Changes" comment="POS">
-      <change beforePath="$PROJECT_DIR$/.settings/org.eclipse.jdt.core.prefs" beforeDir="false" afterPath="$PROJECT_DIR$/.settings/org.eclipse.jdt.core.prefs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/employee.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/increff/employee/controller/AboutApiController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/increff/employee/controller/AbstractUiController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/increff/employee/controller/AdminApiController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/increff/employee/controller/AppRestControllerAdvice.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/increff/employee/controller/AppUiController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/increff/employee/controller/EmployeeApiController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/increff/employee/controller/InitApiController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/increff/employee/controller/LoginController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/increff/employee/controller/SampleController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/increff/employee/controller/SiteUiController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/increff/employee/dao/AbstractDao.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/increff/employee/dao/EmployeeDao.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/increff/employee/dao/EmployeeInMemDao.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/increff/employee/dao/UserDao.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/increff/employee/model/AboutAppData.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/increff/employee/model/EmployeeData.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/increff/employee/model/EmployeeForm.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/increff/employee/model/InfoData.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/increff/employee/model/LoginForm.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/increff/employee/model/MessageData.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/increff/employee/model/UserData.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/increff/employee/model/UserForm.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/increff/employee/pojo/EmployeePojo.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/increff/employee/pojo/UserPojo.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/increff/employee/service/AboutAppService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/increff/employee/service/ApiException.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/increff/employee/service/EmployeeService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/increff/employee/service/UserService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/increff/employee/spring/ControllerConfig.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/increff/employee/spring/DbConfig.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/increff/employee/spring/SecurityConfig.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/increff/employee/spring/SpringConfig.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/increff/employee/spring/SpringSecurityInitializer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/increff/employee/spring/WebInitializer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/increff/employee/util/CookieUtil.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/increff/employee/util/IOUtil.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/increff/employee/util/SecurityUtil.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/increff/employee/util/StringUtil.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/increff/employee/util/UserPrincipal.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/increff/employee/employee.tsv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/html/employee.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/html/features.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/html/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/html/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/html/init.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/html/login.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/html/logout.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/html/pricing.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/html/snippets.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/html/user.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/app.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/app.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/employee.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/papaparse.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/user.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/increff/employee/service/AboutAppServiceTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/increff/employee/service/AbstractUnitTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/increff/employee/service/EmployeeServiceTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/increff/employee/service/QaConfig.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/increff/employee/service/SampleTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/com/increff/employee/test.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/html/brand.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/html/brand.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/html/inventory.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/html/inventory.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/html/order.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/html/order.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/html/product.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/html/product.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/html/report.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/html/report.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/brand.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/static/brand.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/inventory.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/static/inventory.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/product.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/static/product.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
