@@ -19,7 +19,6 @@ public class ProductPojo {
 	private double mrp;
 	private int brandId;
 
-	// TODO indexing
 	public int getId() {
 		return id;
 	}

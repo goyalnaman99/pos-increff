@@ -1,4 +1,4 @@
-var no = 0;
+
 function getInventoryUrl() {
 	var baseUrl = $("meta[name=baseUrl]").attr("content")
 	return baseUrl + "/api/inventory";
@@ -148,6 +148,7 @@ function downloadErrors() {
 function displayInventoryList(data) {
 	var $tbody = $('#inventory-table').find('tbody');
 	$tbody.empty();
+	var no = 0;
 	for ( var i in data) {
 		var e = data[i];
 		var buttonHtml = ' <button type="button" class="btn text-bodye" onclick="displayEditInventory(' + e.id

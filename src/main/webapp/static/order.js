@@ -7,7 +7,6 @@ function getOrderUrl() {
 var order = [];
 function addOrderItem(event) {
 	var $form = $("#order-add-form");
-	$("#order-add-form input[name=barcode]").onblur = function() {populateOnBlur()};
 	var json = toJson($form);
 	order.push(JSON.parse(json));
 	toastr.success("Order Item Added to Cart");
@@ -187,10 +186,6 @@ function displayOrderItemEdit(data) {
 	$('#edit-orderitem-modal').modal('toggle');
 }
 
-function populateOnBlur(){
-	$("#order-add-form input[name=quantity]").val(data.quantity);
-	$("#order-add-form input[name=sellingPrice]").val(data.mrp);
-}
 // INITIALIZATION CODE
 function init() {
 	$('#add-order').click(addOrderItem)

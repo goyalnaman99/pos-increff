@@ -3,6 +3,7 @@ package com.increff.pos.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.increff.pos.model.ProductUploadForm;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -36,6 +37,15 @@ public class ProductController {
 	@RequestMapping(path = "/api/product", method = RequestMethod.POST)
 	public void add(@RequestBody ProductForm form) throws ApiException{
 		ProductPojo product_pojo = ConversionUtil.convert(form);
+		product_service.add(product_pojo);
+	}
+
+	@ApiOperation(value = "Add Product Details using upload")
+	@RequestMapping(path = "/api/product/upload", method = RequestMethod.POST)
+	public void add(@RequestBody ProductUploadForm form) throws ApiException{
+		BrandPojo brandPojo = brand_service.getBrandCategory(form.getBrand(), form.getCategory());
+		int brandId = brandPojo.getId();
+		ProductPojo product_pojo = ConversionUtil.convert(form, brandId);
 		product_service.add(product_pojo);
 	}
 	

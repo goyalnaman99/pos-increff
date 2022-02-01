@@ -5,15 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.increff.pos.model.BrandData;
-import com.increff.pos.model.BrandForm;
-import com.increff.pos.model.InventoryData;
-import com.increff.pos.model.InventoryForm;
-import com.increff.pos.model.OrderData;
-import com.increff.pos.model.OrderItemData;
-import com.increff.pos.model.OrderItemForm;
-import com.increff.pos.model.ProductData;
-import com.increff.pos.model.ProductForm;
+import com.increff.pos.model.*;
 import com.increff.pos.pojo.BrandPojo;
 import com.increff.pos.pojo.InventoryPojo;
 import com.increff.pos.pojo.OrderItemPojo;
@@ -49,7 +41,7 @@ public class ConversionUtil {
 		return list1;
 	}
 
-	// toProductPojo
+	//ProductForm toProductPojo
 	public static ProductPojo convert(ProductForm f) {
 		ProductPojo product_pojo = new ProductPojo();
 		product_pojo.setName(f.getName());
@@ -57,6 +49,15 @@ public class ConversionUtil {
 		product_pojo.setBrandId(f.getBrandId());
 		return product_pojo;
 	}
+	//ProductUploadForm toProductPojo
+	public static ProductPojo convert(ProductUploadForm f, int brandId) {
+		ProductPojo product_pojo = new ProductPojo();
+		product_pojo.setName(f.getName());
+		product_pojo.setMrp(f.getMrp());
+		product_pojo.setBrandId(brandId);
+		return product_pojo;
+	}
+
 
 	// ProductPojo toProductData
 	public static ProductData convert(ProductPojo p, BrandPojo brandPojo) {

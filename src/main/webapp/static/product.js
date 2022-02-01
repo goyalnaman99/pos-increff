@@ -1,4 +1,4 @@
-var no = 0;
+
 function getProductUrl() {
 	var baseUrl = $("meta[name=baseUrl]").attr("content");
 	console.log(baseUrl);
@@ -110,7 +110,7 @@ function uploadRows() {
 	processCount++;
 
 	var json = JSON.stringify(row);
-	var url = getProductUrl();
+	var url = getProductUrl() + "/upload";
 
 	// Make ajax call
 	$.ajax({
@@ -122,13 +122,11 @@ function uploadRows() {
 		},
 		success : function(response) {
 			uploadRows();
-			toastr.success("File Uploaded Successfully");
 		},
 		error : function(response) {
 			row.error = response.responseText
 			errorData.push(row);
 			uploadRows();
-			toastr.error("Error Uploading File");
 		}
 	});
 }
@@ -143,6 +141,7 @@ function displayProductList(data) {
 	console.log('Printing Product data');
 	var $tbody = $('#product-table').find('tbody');
 	$tbody.empty();
+	var no = 0;
 	for ( var i in data) {
 		var e = data[i];
 		var buttonHtml = ' <button type="button" class="btn text-bodye" onclick="displayEditProduct('

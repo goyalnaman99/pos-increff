@@ -3,6 +3,7 @@ com\increff\pos\model\ProductForm.class
 com\increff\pos\controller\InventoryController.class
 com\increff\pos\service\ApiException.class
 com\increff\pos\dao\AbstractDao.class
+com\increff\pos\model\ProductUploadForm.class
 com\increff\pos\pojo\OrderItemPojo.class
 com\increff\pos\spring\SpringConfig.class
 com\increff\pos\dao\InventoryDao.class
