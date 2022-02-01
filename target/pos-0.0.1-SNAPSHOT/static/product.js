@@ -1,3 +1,4 @@
+
 function getProductUrl() {
 	var baseUrl = $("meta[name=baseUrl]").attr("content");
 	console.log(baseUrl);
@@ -13,7 +14,7 @@ function getBrandUrl() {
 function addProduct(event) {
 
 	// Set the values to update
-	var $form = $("#product-form");
+	var $form = $("#product-add-form");
 	var json = toJson($form);
 	var url = getProductUrl();
 	console.log(json);
@@ -25,13 +26,12 @@ function addProduct(event) {
 			'Content-Type' : 'application/json'
 		},
 		success : function(response) {
-			$form.trigger("reset");
 			toastr.success("Product Added Successfully");
+			$('#add-product-modal').modal('toggle');
 			getProductList();
 		},
 		error : function(response) {
-			handleAjaxError
-			toastr.error("Error Adding Product");
+			handleAjaxError(response)
 		}
 	});
 
@@ -60,8 +60,7 @@ function updateProduct(event) {
 			getProductList();
 		},
 		error : function(response) {
-			handleAjaxError
-			toastr.error("Error Updating Product");
+			handleAjaxError(response)
 		}
 	});
 
@@ -104,14 +103,14 @@ function uploadRows() {
 	if (processCount == fileData.length) {
 		return;
 	}
-
+	
 	// Process next row
-	var row = fileData[rowsProcessed];
+	var row = fileData[processCount];
 	console.log(row);
 	processCount++;
 
 	var json = JSON.stringify(row);
-	var url = getProductUrl();
+	var url = getProductUrl() + "/upload";
 
 	// Make ajax call
 	$.ajax({
@@ -123,13 +122,11 @@ function uploadRows() {
 		},
 		success : function(response) {
 			uploadRows();
-			toastr.success("File Uploaded Successfully");
 		},
 		error : function(response) {
 			row.error = response.responseText
 			errorData.push(row);
 			uploadRows();
-			toastr.error("Error Uploading File");
 		}
 	});
 }
@@ -144,13 +141,14 @@ function displayProductList(data) {
 	console.log('Printing Product data');
 	var $tbody = $('#product-table').find('tbody');
 	$tbody.empty();
+	var no = 0;
 	for ( var i in data) {
 		var e = data[i];
 		var buttonHtml = ' <button type="button" class="btn text-bodye" onclick="displayEditProduct('
-				+ e.id + ')"><i class="fas fa-edit"></i></button>'
+				+ e.id + ')"><i class="fas fa-pencil-alt"></i></button>'
 		console.log('brand');
-		var row = '<tr>' + '<td>' + e.barcode + '</td>' + '<td>' + e.brand
-				+ '</td>' + '<td>' + e.category + '</td>' + '<td>' + e.name
+		var row = '<tr>' + '<td>' + ++no + '</td>'+ '<td>' + e.name + '</td>' + '<td>' + e.brand
+				+ '</td>' + '<td>' + e.category + '</td>' + '<td>' + e.barcode
 				+ '</td>' + '<td>' + parseFloat(e.mrp).toFixed(2) + '</td>'
 				+ '<td>' + buttonHtml + '</td>' + '</tr>';
 		$tbody.append(row);
@@ -199,6 +197,11 @@ function displayUploadData() {
 	$('#upload-product-modal').modal('toggle');
 }
 
+function displayAddData() {
+	$("#product-add-form").trigger('reset');
+	$('#add-product-modal').modal('toggle');
+}
+
 function displayProduct(data) {
 	$("#product-edit-form select[name=brandId]").val(data.brandId);
 	$("#product-edit-form input[name=name]").val(data.name);
@@ -225,7 +228,7 @@ function populateBrandCategoryDropDown() {
 		url : url,
 		type : "GET",
 		success : function(data) {
-			addDataToBrandCategoryDropdown(data, "#product-form");
+			addDataToBrandCategoryDropdown(data, "#product-add-form");
 			addDataToBrandCategoryDropdown(data, "#product-edit-form");
 		},
 		error : handleAjaxError,
@@ -234,7 +237,8 @@ function populateBrandCategoryDropDown() {
 
 // INITIALIZATION CODE
 function init() {
-	$('#add-product').click(addProduct);
+	$('#submit-add-product').click(addProduct);
+	$('#add-product').click(displayAddData);
 	$('#update-product').click(updateProduct);
 	$('#refresh-data').click(getProductList);
 	$('#upload-data').click(displayUploadData);

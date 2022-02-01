@@ -14,9 +14,17 @@ function toJson($form){
 
 
 function handleAjaxError(response){
-	var response = JSON.parse(response.responseText);
-	alert(response.message);
-} //enclose in try catch
+	try{
+		var response = JSON.parse(response.responseText);
+		toastr.options.closeButton = true;
+        toastr.options.timeOut = 0;
+        toastr.options.extendedTimeOut = 0;
+	    toastr.error(response.message);
+	}
+	catch(error){
+		toastr.error("Internal Error");
+	}
+} // enclose in try catch
 
 function readFileData(file, callback){
 	var config = {

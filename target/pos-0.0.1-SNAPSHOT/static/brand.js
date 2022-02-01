@@ -1,3 +1,4 @@
+
 function getBrandUrl() {
 	var baseUrl = $("meta[name=baseUrl]").attr("content")
 	return baseUrl + "/api/brand";
@@ -6,7 +7,7 @@ function getBrandUrl() {
 // BUTTON ACTIONS
 function addBrand(event) {
 	// Set the values to update
-	var $form = $("#brand-form");
+	var $form = $("#brand-add-form");
 	var json = toJson($form);
 	var url = getBrandUrl();
 	console.log(json);
@@ -19,11 +20,11 @@ function addBrand(event) {
 		},
 		success : function(response) {
 			toastr.success("Brand Added Successfully");
+			$('#add-brand-modal').modal('toggle');
 			getBrandList();
 		},
 		error : function(response) {
-			handleAjaxError
-			toastr.error("Error adding brand/category pair");
+			handleAjaxError(response)
 		}
 	});
 
@@ -52,8 +53,7 @@ function updateBrand(event) {
 			getBrandList();
 		},
 		error : function(response) {
-			handleAjaxError
-			toastr.error("Error making changes");
+			handleAjaxError(response)
 		}
 	});
 
@@ -122,7 +122,7 @@ function uploadRows() {
 			row.error = response.responseText
 			errorData.push(row);
 			uploadRows();
-			toastr.success("File could not be uploaded");
+			toastr.error("File could not be uploaded");
 		}
 	});
 
@@ -137,11 +137,12 @@ function downloadErrors() {
 function displayBrandList(data) {
 	var $tbody = $('#brand-table').find('tbody');
 	$tbody.empty();
+	var no = 0;
 	for ( var i in data) {
 		var e = data[i];
 		var buttonHtml = ' <button type="button" class="btn text-bodye" onclick="displayEditBrand(' + e.id
-				+ ')"><i class="fas fa-edit"></i></button>'
-		var row = '<tr>' + '<td>' + e.brand + '</td>'
+				+ ')"><i class="fas fa-pencil-alt"></i></button>'
+		var row = '<tr>' + '<td>' + ++no + '</td>' + '<td>' + e.brand + '</td>'
 				+ '<td>' + e.category + '</td>' + '<td>' + buttonHtml + '</td>'
 				+ '</tr>';
 		$tbody.append(row);
@@ -190,6 +191,11 @@ function displayUploadData() {
 	$('#upload-brand-modal').modal('toggle');
 }
 
+function displayAddData() {
+	$("#brand-add-form").trigger('reset');
+	$('#add-brand-modal').modal('toggle');
+}
+
 function displayBrand(data) {
 	$("#brand-edit-form input[name=brand]").val(data.brand);
 	$("#brand-edit-form input[name=category]").val(data.category);
@@ -199,7 +205,8 @@ function displayBrand(data) {
 
 // INITIALIZATION CODE
 function init() {
-	$('#add-brand').click(addBrand);
+	$('#add-brand').click(displayAddData);
+	$('#submit-add-brand').click(addBrand);
 	$('#update-brand').click(updateBrand);
 	$('#refresh-data').click(getBrandList);
 	$('#upload-data').click(displayUploadData);

@@ -38,20 +38,16 @@ public class OrderController {
 
 	@ApiOperation(value = "Add Order Details")
 	@RequestMapping(path = "/api/order", method = RequestMethod.POST)
-	public OrderData add(@RequestBody List <OrderItemForm> forms, HttpServletResponse response)
+	public OrderData add(@RequestBody List <OrderItemForm> forms)
 			throws ApiException, Exception {
-		if(forms.size()==0) {
-			throw new ApiException("Order List cannot be empty");
-		}
 		List<OrderItemPojo> orderItemList = new ArrayList<OrderItemPojo>();
-		OrderPojo orderPojo = orderService.add();
+		//Converting list of OrderItemForms to OrderItemPojos
 		for (OrderItemForm f : forms) {
-			orderItemList.add(ConversionUtil.convertOrderItemForm(f, orderPojo, productService.get(f.getBarcode())));
+			orderItemList.add(ConversionUtil.convertOrderItemForm(f, productService.get(f.getBarcode())));
 		}
-		int orderId = orderPojo.getId();
-		orderService.createOrder(orderItemList, orderId);
+		int orderId = orderService.createOrder(orderItemList);
 		double total = orderService.billTotal(orderId);
-		return ConversionUtil.convertOrderPojo(orderPojo, total);
+		return ConversionUtil.convertOrderPojo(orderService.getOrder(orderId), total);
 	}
 
 	@ApiOperation(value = "Get Order Item details record by id")
@@ -119,7 +115,7 @@ public class OrderController {
 		ProductPojo productPojo = productService.get(f.getBarcode());
 		OrderItemPojo ex = orderService.get(id);
 		OrderPojo orderPojo = orderService.getOrder(ex.getOrderId());
-		OrderItemPojo orderItemPojo = ConversionUtil.convertOrderItemForm(f, orderPojo, productPojo);
+		OrderItemPojo orderItemPojo = ConversionUtil.convertOrderItemForm(f, productPojo);
 		orderService.update(id, orderItemPojo);
 	}
 }

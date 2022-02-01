@@ -7,8 +7,28 @@
     <list default="true" id="0ba18197-5437-4f8e-bc17-00bd279dcbc2" name="Changes" comment="POS">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/increff/pos/controller/OrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/increff/pos/controller/OrderController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/increff/pos/service/OrderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/increff/pos/service/OrderService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/increff/pos/util/ConversionUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/increff/pos/util/ConversionUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/html/brand.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/html/brand.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/html/order.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/html/order.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/report.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/static/report.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/m2e-wtp/web-resources/META-INF/maven/com.increff/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/pos-0.0.1-SNAPSHOT/html/brand.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/pos-0.0.1-SNAPSHOT/html/brand.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/pos-0.0.1-SNAPSHOT/html/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/pos-0.0.1-SNAPSHOT/html/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/pos-0.0.1-SNAPSHOT/html/inventory.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/pos-0.0.1-SNAPSHOT/html/inventory.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/pos-0.0.1-SNAPSHOT/html/order.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/pos-0.0.1-SNAPSHOT/html/order.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/pos-0.0.1-SNAPSHOT/html/product.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/pos-0.0.1-SNAPSHOT/html/product.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/pos-0.0.1-SNAPSHOT/html/snippets.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/pos-0.0.1-SNAPSHOT/html/snippets.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/pos-0.0.1-SNAPSHOT/sample/brand.tsv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/pos-0.0.1-SNAPSHOT/sample/inventory.tsv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/pos-0.0.1-SNAPSHOT/sample/product.tsv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/pos-0.0.1-SNAPSHOT/static/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/pos-0.0.1-SNAPSHOT/static/app.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/pos-0.0.1-SNAPSHOT/static/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/pos-0.0.1-SNAPSHOT/static/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/pos-0.0.1-SNAPSHOT/static/brand.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/pos-0.0.1-SNAPSHOT/static/brand.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/pos-0.0.1-SNAPSHOT/static/inventory.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/pos-0.0.1-SNAPSHOT/static/inventory.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/pos-0.0.1-SNAPSHOT/static/order.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/pos-0.0.1-SNAPSHOT/static/order.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/pos-0.0.1-SNAPSHOT/static/product.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/pos-0.0.1-SNAPSHOT/static/product.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,9 +53,6 @@
         <entry key="com.haulmont.jpb.jpaStructure" value="true" />
       </map>
     </option>
-  </component>
-  <component name="ProblemsViewState">
-    <option name="selectedIndex" value="1" />
   </component>
   <component name="ProjectId" id="23hgq2NgMEdUfkt7G1OZfNhllWk" />
   <component name="ProjectViewState">
@@ -73,6 +90,9 @@
     </task>
     <option name="localTasksCounter" value="2" />
     <servers />
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="com.intellij.fileTypeFactory" implementationName="*.js" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">

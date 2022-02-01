@@ -1,18 +1,17 @@
 package com.increff.pos.service;
 
-import java.util.Date;
-import java.util.List;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-
 import com.increff.pos.dao.OrderDao;
 import com.increff.pos.dao.OrderItemDao;
 import com.increff.pos.pojo.InventoryPojo;
 import com.increff.pos.pojo.OrderItemPojo;
 import com.increff.pos.pojo.OrderPojo;
 import com.increff.pos.pojo.ProductPojo;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.Date;
+import java.util.List;
 
 @Service
 public class OrderService {
@@ -29,27 +28,26 @@ public class OrderService {
 	@Autowired
 	private ProductService productService;
 
-	// Adding an order
+	// Creating order
 	@Transactional(rollbackFor = ApiException.class)
-	public OrderPojo add() throws ApiException {
+	public int createOrder(List<OrderItemPojo> orderItemList) throws ApiException {
+		if(orderItemList.size() == 0){
+			throw new ApiException("Order List cannot be empty");
+		}
 		OrderPojo orderPojo = new OrderPojo();
 		orderPojo.setDate(new Date());
 		orderDao.insert(orderPojo);
-		return orderPojo;
-	}
-
-	// Creating order
-	@Transactional(rollbackFor = ApiException.class)
-	public void createOrder(List<OrderItemPojo> orderItemList, int orderId) throws ApiException {
 		for (OrderItemPojo p : orderItemList) {
 			ProductPojo productPojo = productService.get(p.getProductId());
 			if (productPojo == null) {
-				throw new ApiException("Product entered does not exist.");
+				throw new ApiException("Product with barcode: " + productPojo.getBarcode() + " does not exist.");
 			}
 			validate(p);
+			p.setOrderId(orderPojo.getId());
 			orderItemDao.insert(p);
 			updateInventory(p);
 		}
+		return orderPojo.getId();
 	}
 
 	// Fetching an Order item by id
@@ -172,12 +170,12 @@ public class OrderService {
 		if (p.getQuantity() <= 0) {
 			throw new ApiException("Quantity must be positive");
 		} else if (inventoryService.getByProductId(p.getProductId()).getQuantity() < p.getQuantity()) {
-			throw new ApiException("Order quantity exceeds available quantity");
+			throw new ApiException("Available quantity for this product is: " + inventoryService.getByProductId(p.getProductId()).getQuantity());
 		}
 		
 		if(p.getSellingPrice() > p.getMrp())
 		{
-			throw new ApiException("SP can't be greater than MRP");
+			throw new ApiException("SP can't be greater than MRP: " + p.getMrp());
 		}
 	}
 

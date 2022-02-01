@@ -91,10 +91,9 @@ public class ConversionUtil {
 	}
 
 	// Convert OrderItemForm to OrderItemPojo
-	public static OrderItemPojo convertOrderItemForm(OrderItemForm orderItemForm, OrderPojo orderPojo,
+	public static OrderItemPojo convertOrderItemForm(OrderItemForm orderItemForm,
 			ProductPojo productPojo) {
 		OrderItemPojo item = new OrderItemPojo();
-		item.setOrderId(orderPojo.getId());
 		item.setProductId(productPojo.getId());
 		item.setQuantity(orderItemForm.getQuantity());
 		item.setSellingPrice(orderItemForm.getSellingPrice());
