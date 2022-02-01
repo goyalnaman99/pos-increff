@@ -28,9 +28,10 @@ function getSalesReport() {
 function displaySalesReportList(data) {
 	var $tbody = $("#sales-report-table").find("tbody");
 	$tbody.empty();
+	var no = 0;
 	for ( var i in data) {
 		var e = data[i];
-		var row = "<tr>" + "<td>" + e.brand + "</td>" + "<td>" + e.category + "</td>" + "<td>" + e.quantity
+		var row = "<tr>" + "<td>" + ++no + "</td>" + "<td>" + e.brand + "</td>" + "<td>" + e.category + "</td>" + "<td>" + e.quantity
 				+ "</td>" + "<td>" + e.revenue + "</td>" + "</tr>";
 		$tbody.append(row);
 	}

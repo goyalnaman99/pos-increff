@@ -31,7 +31,7 @@ jQuery.fn.tableToCSV = function() {
 			var uri = 'data:text/csv;charset=utf-8,' + encodeURIComponent(csv);
 			var download_link = document.createElement('a');
 			download_link.href = uri;
-			var ts = new Date().getTime();
+			var ts = "sales-report";
 			if(caption==""){
 				download_link.download = ts+".csv";
 			} else {

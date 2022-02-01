@@ -40,6 +40,9 @@ public class OrderController {
 	@RequestMapping(path = "/api/order", method = RequestMethod.POST)
 	public OrderData add(@RequestBody List <OrderItemForm> forms, HttpServletResponse response)
 			throws ApiException, Exception {
+		if(forms.size()==0) {
+			throw new ApiException("Order List cannot be empty");
+		}
 		List<OrderItemPojo> orderItemList = new ArrayList<OrderItemPojo>();
 		OrderPojo orderPojo = orderService.add();
 		for (OrderItemForm f : forms) {
