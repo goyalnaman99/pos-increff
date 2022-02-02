@@ -6,19 +6,16 @@
   <component name="ChangeListManager">
     <list default="true" id="0ba18197-5437-4f8e-bc17-00bd279dcbc2" name="Changes" comment="POS">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/increff/pos/controller/OrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/increff/pos/controller/OrderController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/increff/pos/service/OrderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/increff/pos/service/OrderService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/increff/pos/service/ReportService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/increff/pos/service/ReportService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/html/order.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/html/order.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/html/snippets.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/html/snippets.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/static/app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/static/brand.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/static/brand.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/static/order.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/static/order.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/pos-0.0.1-SNAPSHOT/html/brand.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/pos-0.0.1-SNAPSHOT/html/brand.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/pos-0.0.1-SNAPSHOT/html/order.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/pos-0.0.1-SNAPSHOT/html/order.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/pos-0.0.1-SNAPSHOT/html/snippets.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/pos-0.0.1-SNAPSHOT/html/snippets.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/pos-0.0.1-SNAPSHOT/static/brand.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/pos-0.0.1-SNAPSHOT/static/brand.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/pos-0.0.1-SNAPSHOT/static/order.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/pos-0.0.1-SNAPSHOT/static/order.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/m2e-wtp/web-resources/META-INF/maven/com.increff/pos/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/m2e-wtp/web-resources/META-INF/maven/com.increff/pos/pom.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/m2e-wtp/web-resources/META-INF/maven/com.increff/pos/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/m2e-wtp/web-resources/META-INF/maven/com.increff/pos/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,6 +47,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
@@ -125,6 +123,7 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="POS" />
     <option name="LAST_COMMIT_MESSAGE" value="POS" />
   </component>

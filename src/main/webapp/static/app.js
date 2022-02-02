@@ -16,19 +16,20 @@ function toJson($form){
 function handleAjaxError(response){
 	try{
 		var response = JSON.parse(response.responseText);
-		toastr.options.closeButton = true;
-        toastr.options.timeOut = 0;
-        toastr.options.extendedTimeOut = 0;
-	    toastr.error(response.message);
+	    toastr.error(response.message, "error", {
+	    	"closeButton" : true,
+	    	"timeOut" : 0,
+	    	"extentedTimeOut" : 0
+	    });
 	}
 	catch(error){
-		toastr.error("Internal Error");
-		toastr.options.closeButton = true;
-        toastr.options.timeOut = 0;
-        toastr.options.extendedTimeOut = 0;
-	    toastr.error(response.message);
+		toastr.error("Internal Error", "error", {
+	    	"closeButton" : true,
+	    	"timeOut" : 0,
+	    	"extentedTimeOut" : 0
+	    });
 	}
-} // enclose in try catch
+}
 
 function readFileData(file, callback){
 	var config = {

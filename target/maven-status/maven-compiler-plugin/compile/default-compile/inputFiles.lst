@@ -17,6 +17,7 @@ E:\Work\Repos\pos-increff\src\main\java\com\increff\pos\service\AboutAppService.
 E:\Work\Repos\pos-increff\src\main\java\com\increff\pos\service\ProductService.java
 E:\Work\Repos\pos-increff\src\main\java\com\increff\pos\controller\ProductController.java
 E:\Work\Repos\pos-increff\src\main\java\com\increff\pos\model\OrderItemForm.java
+E:\Work\Repos\pos-increff\src\main\java\com\increff\pos\util\PDFUtils.java
 E:\Work\Repos\pos-increff\src\main\java\com\increff\pos\pojo\BrandPojo.java
 E:\Work\Repos\pos-increff\src\main\java\com\increff\pos\dao\OrderItemDao.java
 E:\Work\Repos\pos-increff\src\main\java\com\increff\pos\spring\SpringConfig.java
@@ -44,3 +45,4 @@ E:\Work\Repos\pos-increff\src\main\java\com\increff\pos\model\InvoiceData.java
 E:\Work\Repos\pos-increff\src\main\java\com\increff\pos\service\OrderService.java
 E:\Work\Repos\pos-increff\src\main\java\com\increff\pos\controller\AboutApiController.java
 E:\Work\Repos\pos-increff\src\main\java\com\increff\pos\dao\AbstractDao.java
+E:\Work\Repos\pos-increff\src\main\java\com\increff\pos\model\BillData.java

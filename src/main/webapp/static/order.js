@@ -8,11 +8,20 @@ var order = [];
 function addOrderItem(event) {
 	var $form = $("#order-add-form");
 	var json = toJson($form);
-	order.push(JSON.parse(json));
-	toastr.success("Order Item Added to Cart");
-	$("#order-add-form").trigger("reset");
-	console.log(order);
-	displayOrderItemListAdd(order);
+	var orderItem = JSON.parse(json);
+	if(orderItem.barcode !== "" && orderItem.quantity >= 0 && orderItem.sellingPrice > 0)
+	{
+		order.push(orderItem);
+		toastr.success("Order Item Added to Cart");
+		$("#order-add-form").trigger("reset");
+		console.log(order);
+		displayOrderItemListAdd(order);
+	}
+	else {toastr.error("Please fill out all fields", "", {
+    	"closeButton" : true,
+    	"timeOut" : 0,
+    	"extentedTimeOut" : 0
+    });}
 }
 function cancelOrder(event) {
 	order = [];
@@ -35,23 +44,22 @@ function addOrder(event) {
 			order = [];
 			getOrderList();
 			toastr.success("Order Created Successfully");
-
+			$("#order-add-form").trigger("reset");
+			$('#add-order-modal').modal('hide');
+			$("#orderitemadd-table tbody").empty();
 		},
 		error : function(response) {
 			handleAjaxError(response)
 		}
 	});
-	$("#orderitemadd-table tbody").remove();
 	return false;
 }
 
 function updateOrderItem(event) {
-	$('#edit-orderitem-modal').modal('hide');
 	// Get the ID
 	var id = $("#order-edit-form input[name=id]").val();
 	var orderId = $("#order-edit-form input[name=orderId]").val();
 	var url = getOrderUrl() + "/item/" + id;
-
 	// Set the values to update
 	var $form = $("#order-edit-form");
 	var json = toJson($form);
@@ -64,18 +72,46 @@ function updateOrderItem(event) {
 			'Content-Type' : 'application/json'
 		},
 		success : function(response) {
+			$('#edit-orderitem-modal').modal('hide');
 			toastr.success("Changes Implemented Successfully");
 			getOrderItemList(orderId);
 			getOrderList();
 		},
 		error : function(response) {
 			handleAjaxError(response)
-			getOrderItemList(orderId);
 		}
 	});
 
 	return false;
 }
+
+function getInvoice(id) {
+    var url = getOrderUrl() + "/invoice/" + id;
+    console.log(url);
+    $.ajax({
+        url: url,
+        type: 'GET',
+        responseType: 'arraybuffer',
+        success: function (response) {
+            var arrayBuffer = base64ToArrayBuffer(response); //data is the base64 encoded string
+            function base64ToArrayBuffer(base64) {
+                var binaryString = window.atob(base64);
+                var binaryLen = binaryString.length;
+                var bytes = new Uint8Array(binaryLen);
+                for (var i = 0; i < binaryLen; i++) {
+                    bytes[i] = binaryString.charCodeAt(i);
+                }
+                return bytes;
+            }
+
+            var blob = new Blob([arrayBuffer], {type: "application/pdf"});
+            var link = window.URL.createObjectURL(blob);
+            window.open(link, '');
+        },
+        error: handleAjaxError
+    })
+}
+
 
 function getOrderList() {
 	console.log("getting order list");
@@ -122,10 +158,10 @@ function deleteOrderItem(id) {
 	});
 }
 
-function deleteRow(barcode) {
-	console.log(barcode);
+function deleteRow(data) {
+	console.log(data);
 	order = order.filter((item) => {
-		return item.barcode !== barcode;
+		return item.barcode !== data;
 	});
 	displayOrderItemListAdd(order);
 }
@@ -137,8 +173,10 @@ function displayOrderList(data) {
 	$tbody.empty();
 	for ( var i in data) {
 		var e = data[i];
-		var buttonHtml = ' <button type="button" class="btn text-bodye" data-toggle="tooltip" title="View/Edit" onclick="getOrderItemList('
-				+ e.id + ')"><i class="fas fa-eye"></i></button>'
+		var buttonHtml = ' <button type="button" class="btn btn-sm btm-outline-primary" onclick="getOrderItemList('
+				+ e.id + ')">View</button>'
+			buttonHtml += '<button type="button" class="btn btn-sm btm-outline-primary" data-toggle="tooltip" title="View/Edit" onclick="getInvoice('
+                            				+ e.id + ')">Download Invoice</button>'
 		var row = '<tr>' + '<td>' + e.id + '</td>' + '<td>' + e.datetime + '</td>'+ '<td>' + e.billAmount + '</td>' + '<td>' + buttonHtml
 				+ '</td>' + '</tr>';
 		$tbody.append(row);
@@ -168,8 +206,7 @@ function displayOrderItemListAdd(data) {
 	$tbody.empty();
 	for ( var i in data) {
 		var e = data[i];
-		var buttonHtml = '<button type="button" class="btn text-bodye" data-toggle="tooltip" title="Delete" onclick="deleteRow("'
-			+ e.barcode + '")"><i class="fas fa-trash-alt"></i></button>'
+		var buttonHtml = '<button type="button" class="btn text-bodye" data-toggle="tooltip" title="Delete" onclick="deleteRow(\'' + e.barcode + '\')"><i class="fas fa-trash-alt"></i></button>'
 		var row = '<tr>' + '<td>' + e.barcode + '</td>' + '<td>' + e.quantity
 				+ '</td>' + '<td>' + e.sellingPrice + '</td>'+ '<td>' + buttonHtml + '</td>' + '</tr>';
 		$tbody.append(row);

@@ -128,7 +128,7 @@ function uploadRows() {
 			uploadRows();
 		},
 		error : function(response) {
-			row.error = response.responseText
+			row.error = JSON.parse(response.responseText).message
 			errorData.push(row);
 			uploadRows();
 		}

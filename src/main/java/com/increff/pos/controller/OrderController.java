@@ -1,6 +1,8 @@
 package com.increff.pos.controller;
 
+import java.io.File;
 import java.util.ArrayList;
+import java.util.Base64;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.nio.file.Files;
+import com.increff.pos.model.BillData;
 import com.increff.pos.model.OrderData;
 import com.increff.pos.model.OrderItemData;
 import com.increff.pos.model.OrderItemForm;
@@ -20,6 +24,7 @@ import com.increff.pos.service.ApiException;
 import com.increff.pos.service.OrderService;
 import com.increff.pos.service.ProductService;
 import com.increff.pos.util.ConversionUtil;
+import com.increff.pos.util.PDFUtils;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -68,6 +73,30 @@ public class OrderController {
 			d.add(ConversionUtil.convert(orderItemPojo, productPojo, orderPojo));
 		}
 		return d;
+	}
+
+	@ApiOperation(value = "Get Invoice")
+	@RequestMapping(path = "/api/order/invoice/{orderId}", method = RequestMethod.GET)
+	public String getInvoice(@PathVariable int orderId) throws Exception {
+		BillData billData = new BillData();
+		OrderPojo orderPojo = orderService.getOrder(orderId);
+		List<OrderItemPojo> orderItemPojo_list = orderService.getOrderItems(orderId);
+		List<OrderItemData> d = new ArrayList<OrderItemData>();
+		for (OrderItemPojo orderItemPojo : orderItemPojo_list) {
+			ProductPojo productPojo = productService.get(orderItemPojo.getProductId());
+			d.add(ConversionUtil.convert(orderItemPojo, productPojo, orderPojo));
+		}
+		billData.setOrderItemData(d);
+		billData.setBillAmount(orderService.billTotal(orderId));
+		billData.setDatetime(orderPojo.getDate());
+		billData.setOrderId(orderId);
+
+		//orderService.updateInvoice(orderId);
+
+		PDFUtils.generatePDFFromJavaObject(billData);
+		File file = new File("invoice.pdf");
+		byte[] contents = Files.readAllBytes(file.toPath());
+		return Base64.getEncoder().encodeToString(contents);
 	}
 
 	@ApiOperation(value = "Get list of Orders")
