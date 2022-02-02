@@ -2,191 +2,124 @@
 <html lang="en" xmlns:th="">
 <head th:replace="snippets.html :: name_head"></head>
 <body>
-	<nav th:replace="snippets.html :: name_navbar"></nav>
-	<div class="container-fluid">
+<nav th:replace="snippets.html :: name_navbar"></nav>
+<div class="container-fluid">
 
-		<h3>Order</h3>
+    <h3>Order</h3>
 
-		<button type="button" class="btn btn-sm btn-outline-primary" data-toggle="modal"
-			data-target="#add-order-modal">Add</button>
-		&nbsp;
-		<button type="button" class="btn btn-sm btn-outline-secondary" id="refresh-data">Refresh</button>
-		&nbsp;
+    <a th:href="@{/ui/order/create}" class="btn btn-sm btn-outline-primary">Create New Order</a>
+    &nbsp;
+    <button class="btn btn-sm btn-outline-secondary" id="refresh-data" type="button">Refresh</button>
+    &nbsp;
 
-		<!-- Blank Row -->
-		<div class="row">&nbsp;</div>
-		<div class="row">
+    <!-- Blank Row -->
+    <div class="row">&nbsp;</div>
 
-			<!-- Table -->
-			<div class="col-12">
-				<table class="table table-striped" id="order-table">
-					<thead>
-						<tr>
-							<th scope="col">Id</th>
-							<th scope="col">Date-Time</th>
-							<th scope="col">Bill Amount</th>
-							<th scope="col">Actions</th>
-						</tr>
-					</thead>
-					<tbody>
-					</tbody>
-				</table>
-			</div>
-		</div>
-	</div>
+    <div class="row">
+        <!-- Table -->
+        <div class="col-12">
+            <table class="table table-striped" id="order-table">
+                <thead>
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Date-Time</th>
+                    <th scope="col">Bill Amount</th>
+                    <th scope="col">Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
 
-	<!-- order Add Modal -->
-	<div class="modal" tabindex="-1" role="dialog" id="add-order-modal">
-		<div class="modal-dialog modal-lg" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h5 class="modal-title">Add Order Item</h5>
-					<button type="button" class="close" data-dismiss="modal"
-						aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-				</div>
-				<div class="modal-body">
-					<form class id="order-add-form">
-						<div class="form-group row">
-							<label for="inputbarcode" class="col-sm-2 col-form-label">Barcode</label>
-							<div class="col-sm-10">
-								<input type="text" class="form-control" name="barcode"
-									placeholder="Enter Barcode" required>
-							</div>
-						</div>
-						<div class="form-group row">
-							<label for="inputquantity" class="col-sm-2 col-form-label">Quantity</label>
-							<div class="col-sm-10">
-								<input type="number" class="form-control" name="quantity"
-									placeholder="Enter Quantity" required>
-							</div>
-						</div>
-						<div class="form-group row">
-							<label for="inputsellingPrice" class="col-sm-2 col-form-label">Selling
-								Price</label>
-							<div class="col-sm-10">
-								<input type="number" class="form-control" name="sellingPrice"
-									placeholder="Enter Selling Price" required>
-							</div>
-						</div>
-					</form>
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-sm btn-outline-secondary"
-						data-dismiss="modal" id="cancel-order">Cancel</button>
-					<button type="submit" class="btn btn-sm btn-outline-primary" id="add-order">Add</button>
-					<button type="submit" class="btn btn-sm btn-outline-success" id="submit-order">Submit</button>
-				</div>
+<!-- Order Edit Modal -->
+<div class="modal" id="edit-orderitem-modal" role="dialog"
+     tabindex="-1">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Edit Order Item</h5>
+                <button aria-label="Close" class="close" data-dismiss="modal"
+                        type="button">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form class id="order-edit-form">
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label" for="inputbarcode">Barcode</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" name="barcode" placeholder="Enter Barcode"
+                                   required type="text">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label" for="inputquantity">Quantity</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" name="quantity" placeholder="Enter Quantity"
+                                   required type="number">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label" for="inputsellingPrice">Selling
+                            Price</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" name="sellingPrice" placeholder="Enter Selling Price"
+                                   required type="number">
+                        </div>
+                    </div>
+                    <input name="id" type="hidden">
+                    <input name="orderId" type="hidden">
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-sm btn-outline-secondary" data-dismiss="modal"
+                        type="button">Cancel
+                </button>
+                <button class="btn btn-sm btn-outline-primary" id="update-orderitem" type="button">Submit</button>
+            </div>
+        </div>
+    </div>
+</div>
 
-				<!-- Blank Row -->
-				<div class="row">&nbsp;</div>
-				<div class="row">
+<!-- Order Display Modal -->
+<div class="modal" data-backdrop="static" id="order-display-modal" role="dialog" tabindex="-1">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Order Item</h5>
+                <button aria-label="Close" class="close" data-dismiss="modal"
+                        type="button">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="col-12">
+                    <table class="table table-striped" id="orderitem-table">
+                        <thead>
+                        <tr>
+                            <th scope="col">Name</th>
+                            <th scope="col">Barcode</th>
+                            <th scope="col">Quantity</th>
+                            <th scope="col">Selling Price</th>
+                            <th scope="col">Actions</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Container end-->
 
-					<!-- Table -->
-					<div class="col-12">
-						<table class="table table-striped" id="orderitemadd-table">
-							<thead>
-								<tr>
-									<th scope="col">Barcode</th>
-									<th scope="col">Quantity</th>
-									<th scope="col">Selling Price</th>
-								</tr>
-							</thead>
-							<tbody>
-							</tbody>
-						</table>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<!-- Order Edit Modal -->
-	<div class="modal" tabindex="-1" role="dialog"
-		id="edit-orderitem-modal">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h5 class="modal-title">Edit Order Item</h5>
-					<button type="button" class="close" data-dismiss="modal"
-						aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-				</div>
-				<div class="modal-body">
-					<form class id="order-edit-form">
-						<div class="form-group row">
-							<label for="inputbarcode" class="col-sm-2 col-form-label">Barcode</label>
-							<div class="col-sm-10">
-								<input type="text" class="form-control" name="barcode"
-									placeholder="Enter Barcode" required>
-							</div>
-						</div>
-						<div class="form-group row">
-							<label for="inputquantity" class="col-sm-2 col-form-label">Quantity</label>
-							<div class="col-sm-10">
-								<input type="number" class="form-control" name="quantity"
-									placeholder="Enter Quantity" required>
-							</div>
-						</div>
-						<div class="form-group row">
-							<label for="inputsellingPrice" class="col-sm-2 col-form-label">Selling
-								Price</label>
-							<div class="col-sm-10">
-								<input type="number" class="form-control" name="sellingPrice"
-									placeholder="Enter Selling Price" required>
-							</div>
-						</div>
-						<input type="hidden" name="id">
-						<input type="hidden" name="orderId">
-					</form>
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-sm btn-outline-secondary"
-						data-dismiss="modal">Cancel</button>
-					<button type="button" class="btn btn-sm btn-outline-primary" id="update-orderitem">Submit</button>
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<!-- Order Display Modal -->
-	<div class="modal" tabindex="-1" role="dialog" id="order-display-modal" data-backdrop="static">
-		<div class="modal-dialog modal-lg" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h5 class="modal-title">Order Item</h5>
-					<button type="button" class="close" data-dismiss="modal"
-						aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-				</div>
-				<div class="modal-body">
-					<div class="col-12">
-						<table class="table table-striped" id="orderitem-table">
-							<thead>
-								<tr>
-									<th scope="col">Name</th>
-									<th scope="col">Barcode</th>
-									<th scope="col">Quantity</th>
-									<th scope="col">Selling Price</th>
-									<th scope="col">Actions</th>
-								</tr>
-							</thead>
-							<tbody>
-							</tbody>
-						</table>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- Container end-->
-
-	<footer th:replace="snippets.html :: name_footer"></footer>
-	<script th:src="@{/static/order.js}" />
-	</script>
+<footer th:replace="snippets.html :: name_footer"></footer>
+<script th:src="@{/static/order.js}"/>
+</script>
 </body>
 
 </html>

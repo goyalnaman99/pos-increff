@@ -1,4 +1,3 @@
-
 function getProductUrl() {
 	var baseUrl = $("meta[name=baseUrl]").attr("content");
 	console.log(baseUrl);
@@ -100,10 +99,23 @@ function uploadRows() {
 	// Update progress
 	updateUploadDialog();
 	// If everything processed then return
-	if (processCount == fileData.length) {
+	if (processCount == fileData.length && processCount > 0) {
+		if (errorData.length == 0) {
+			toastr.success("File uploaded successfully");
+		} else {
+			toastr.options.closeButton = true;
+	        toastr.options.timeOut = 0;
+	        toastr.options.extendedTimeOut = 0;
+			toastr.error("Uploaded with " + errorData.length + " errors");
+		}
+		getProductList();
+		$("#error-data").show();
+		if (errorData.length == 0) {
+			$("#download-errors").hide();
+		}
 		return;
 	}
-	
+
 	// Process next row
 	var row = fileData[processCount];
 	console.log(row);
@@ -144,13 +156,14 @@ function displayProductList(data) {
 	var no = 0;
 	for ( var i in data) {
 		var e = data[i];
-		var buttonHtml = ' <button type="button" class="btn text-bodye" onclick="displayEditProduct('
+		var buttonHtml = ' <button type="button" class="btn text-bodye" data-toggle="tooltip" title="Edit" onclick="displayEditProduct('
 				+ e.id + ')"><i class="fas fa-pencil-alt"></i></button>'
 		console.log('brand');
-		var row = '<tr>' + '<td>' + ++no + '</td>'+ '<td>' + e.name + '</td>' + '<td>' + e.brand
-				+ '</td>' + '<td>' + e.category + '</td>' + '<td>' + e.barcode
-				+ '</td>' + '<td>' + parseFloat(e.mrp).toFixed(2) + '</td>'
-				+ '<td>' + buttonHtml + '</td>' + '</tr>';
+		var row = '<tr>' + '<td>' + ++no + '</td>' + '<td>' + e.name + '</td>'
+				+ '<td>' + e.brand + '</td>' + '<td>' + e.category + '</td>'
+				+ '<td>' + e.barcode + '</td>' + '<td>'
+				+ parseFloat(e.mrp).toFixed(2) + '</td>' + '<td>' + buttonHtml
+				+ '</td>' + '</tr>';
 		$tbody.append(row);
 	}
 }
@@ -213,7 +226,8 @@ function displayProduct(data) {
 function addDataToBrandCategoryDropdown(data, formId) {
 	var $brand = $(`${formId} select[name=brandId]`);
 	$brand.empty();
-	$brand.append('<option value="" disabled selected>Select Brand Category</option>');
+	$brand
+			.append('<option value="" disabled selected>Select Brand Category</option>');
 	for ( var i in data) {
 		var e = data[i];
 		var option = '<option value="' + e.id + '">' + e.brand + "-"
@@ -237,13 +251,14 @@ function populateBrandCategoryDropDown() {
 
 // INITIALIZATION CODE
 function init() {
-	$('#submit-add-product').click(addProduct);
+	$('#product-add-form').submit(addProduct);
 	$('#add-product').click(displayAddData);
-	$('#update-product').click(updateProduct);
+	$('#product-edit-form').submit(updateProduct);
 	$('#refresh-data').click(getProductList);
 	$('#upload-data').click(displayUploadData);
 	$('#download-errors').click(downloadErrors);
 	$('#process-data').click(processData);
+	$("#error-data").hide();
 	$('#productFile').on('change', updateFileName);
 }
 

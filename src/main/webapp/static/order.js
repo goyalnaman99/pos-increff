@@ -10,13 +10,15 @@ function addOrderItem(event) {
 	var json = toJson($form);
 	order.push(JSON.parse(json));
 	toastr.success("Order Item Added to Cart");
+	$("#order-add-form").trigger("reset");
 	console.log(order);
 	displayOrderItemListAdd(order);
 }
 function cancelOrder(event) {
 	order = [];
 	toastr.warning("Cart Cleared");
-	$("#orderitemadd-table tr").remove();
+	$("#order-add-form").trigger("reset");
+	$("#orderitemadd-table tbody").remove();
 }
 function addOrder(event) {
 	var url = getOrderUrl();
@@ -39,7 +41,7 @@ function addOrder(event) {
 			handleAjaxError(response)
 		}
 	});
-	$("#orderitemadd-table tr").remove();
+	$("#orderitemadd-table tbody").remove();
 	return false;
 }
 
@@ -120,6 +122,14 @@ function deleteOrderItem(id) {
 	});
 }
 
+function deleteRow(barcode) {
+	console.log(barcode);
+	order = order.filter((item) => {
+		return item.barcode !== barcode;
+	});
+	displayOrderItemListAdd(order);
+}
+
 // UI DISPLAY METHODS
 
 function displayOrderList(data) {
@@ -127,8 +137,8 @@ function displayOrderList(data) {
 	$tbody.empty();
 	for ( var i in data) {
 		var e = data[i];
-		var buttonHtml = ' <button type="button" class="btn text-bodye" onclick="getOrderItemList('
-				+ e.id + ')"><i class="fas fa-info-circle"></i></button>'
+		var buttonHtml = ' <button type="button" class="btn text-bodye" data-toggle="tooltip" title="View/Edit" onclick="getOrderItemList('
+				+ e.id + ')"><i class="fas fa-eye"></i></button>'
 		var row = '<tr>' + '<td>' + e.id + '</td>' + '<td>' + e.datetime + '</td>'+ '<td>' + e.billAmount + '</td>' + '<td>' + buttonHtml
 				+ '</td>' + '</tr>';
 		$tbody.append(row);
@@ -140,9 +150,9 @@ function displayOrderItem(data) {
 	$tbody.empty();
 	for ( var i in data) {
 		var e = data[i];
-		var buttonHtml = ' <button type="button" class="btn text-bodye" onclick="deleteOrderItem('
+		var buttonHtml = ' <button type="button" class="btn text-bodye" data-toggle="tooltip" title="Delete" onclick="deleteOrderItem('
 				+ e.id + ')"><i class="fas fa-trash-alt"></i></button>'
-		buttonHtml += ' <button type="button" class="btn text-bodye" onclick="displayEditOrderItem('
+		buttonHtml += ' <button type="button" class="btn text-bodye" data-toggle="tooltip" title="Edit" onclick="displayEditOrderItem('
 				+ e.id + ')"><i class="fas fa-pencil-alt"></i></button>'
 		var row = '<tr>' + '<td>' + e.name + '</td>' + '<td>' + e.barcode
 				+ '</td>' + '<td>' + e.quantity + '</td>' + '<td>'
@@ -158,8 +168,10 @@ function displayOrderItemListAdd(data) {
 	$tbody.empty();
 	for ( var i in data) {
 		var e = data[i];
+		var buttonHtml = '<button type="button" class="btn text-bodye" data-toggle="tooltip" title="Delete" onclick="deleteRow("'
+			+ e.barcode + '")"><i class="fas fa-trash-alt"></i></button>'
 		var row = '<tr>' + '<td>' + e.barcode + '</td>' + '<td>' + e.quantity
-				+ '</td>' + '<td>' + e.sellingPrice + '</td>' + '</tr>';
+				+ '</td>' + '<td>' + e.sellingPrice + '</td>'+ '<td>' + buttonHtml + '</td>' + '</tr>';
 		$tbody.append(row);
 	}
 }

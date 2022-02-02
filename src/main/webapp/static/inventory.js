@@ -1,4 +1,3 @@
-
 function getInventoryUrl() {
 	var baseUrl = $("meta[name=baseUrl]").attr("content")
 	return baseUrl + "/api/inventory";
@@ -23,13 +22,13 @@ function addInventory(event) {
 			$('#add-inventory-modal').modal('toggle');
 			getInventoryList();
 		},
-		error : function(response){
+		error : function(response) {
 			handleAjaxError(response)
 		}
 	});
 
 	return false;
-} //datavalueobject
+} // datavalueobject
 
 function updateInventory(event) {
 	$('#edit-inventory-modal').modal('toggle');
@@ -52,7 +51,7 @@ function updateInventory(event) {
 			toastr.success("Inventory Updated Successfully");
 			getInventoryList();
 		},
-		error : function(response){
+		error : function(response) {
 			handleAjaxError(response)
 		}
 	});
@@ -106,7 +105,20 @@ function uploadRows() {
 	// Update progress
 	updateUploadDialog();
 	// If everything processed then return
-	if (processCount == fileData.length) {
+	if (processCount == fileData.length && processCount > 0) {
+		if (errorData.length == 0) {
+			toastr.success("File uploaded successfully");
+		} else {
+			toastr.options.closeButton = true;
+			toastr.options.timeOut = 0;
+			toastr.options.extendedTimeOut = 0;
+			toastr.error("Uploaded with " + errorData.length + " errors");
+		}
+		getInventoryList();
+		$("#error-data").show();
+		if (errorData.length == 0) {
+			$("#download-errors").hide();
+		}
 		return;
 	}
 
@@ -151,11 +163,11 @@ function displayInventoryList(data) {
 	var no = 0;
 	for ( var i in data) {
 		var e = data[i];
-		var buttonHtml = ' <button type="button" class="btn text-bodye" onclick="displayEditInventory(' + e.id
-				+ ')"><i class="fas fa-pencil-alt"></i></button>'
+		var buttonHtml = ' <button type="button" class="btn text-bodye" data-toggle="tooltip" title="Edit" onclick="displayEditInventory('
+				+ e.id + ')"><i class="fas fa-pencil-alt"></i></button>'
 		var row = '<tr>' + '<td>' + ++no + '</td>' + '<td>' + e.name + '</td>'
-				+ '<td>' + e.barcode + '</td>' + '<td>' + e.quantity + '</td>' + '<td>' + buttonHtml + '</td>'
-				+ '</tr>';
+				+ '<td>' + e.barcode + '</td>' + '<td>' + e.quantity + '</td>'
+				+ '<td>' + buttonHtml + '</td>' + '</tr>';
 		$tbody.append(row);
 	}
 }
@@ -220,12 +232,13 @@ function displayInventory(data) {
 // INITIALIZATION CODE
 function init() {
 	$('#add-inventory').click(displayAddData);
-	$('#submit-add-inventory').click(addInventory);
-	$('#update-inventory').click(updateInventory);
+	$('#inventory-add-form').submit(addInventory);
+	$('#inventory-edit-form').submit(updateInventory);
 	$('#refresh-data').click(getInventoryList);
 	$('#upload-data').click(displayUploadData);
 	$('#process-data').click(processData);
 	$('#download-errors').click(downloadErrors);
+	$("#error-data").hide();
 	$('#inventoryFile').on('change', updateFileName)
 }
 

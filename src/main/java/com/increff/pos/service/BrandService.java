@@ -78,6 +78,10 @@ public class BrandService {
 		if (p.getBrand().isEmpty() || p.getCategory().isEmpty()) {
 			throw new ApiException("Fill both brand and category fields");
 		}
+		if(dao.selectBrandCategory(p.getBrand(), p.getCategory()) != null)
+		{
+			throw new ApiException("Brand-Category combination exists");
+		}
 	}
 
 	// Normalizing

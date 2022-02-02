@@ -1,0 +1,58 @@
+<!doctype html>
+
+<html lang="en">
+
+<head th:replace="snippets.html :: name_head"></head>
+
+<body>
+
+<nav th:replace="snippets.html :: name_navbar"></nav>
+
+<div class="container">
+
+    <h3>Create New Order</h3>
+
+    <!-- Blank Row -->
+    <div class="row">
+        &nbsp;
+    </div>
+    <div class="row">
+
+        <!-- Create Order Form -->
+        <div class="col-12">
+
+            <form id="order-form">
+                <div id="order-form-div">
+                    <div class="form-row">
+                        <div class="form-group col-4">
+                            <label for="inputBarcode">Barcode</label>
+                            <input class="form-control" id="inputBarcode" name="barcode" placeholder="Enter Barcode" required
+                                   type="text">
+                        </div>
+                        <div class="form-group col-3">
+                            <label for="inputQuantity">Quantity</label>
+                            <input class="form-control" id="inputQuantity" name="quantity" placeholder="Enter Quantity" required
+                                   type="number">
+                        </div>
+                        <div class="form-group col-3">
+                            <label for="inputSellingPrice">Selling Price</label>
+                            <input class="form-control" id="inputSellingPrice" name="sellingPrice" placeholder="Enter Selling Price" required
+                                   step="0.01" type="number">
+                        </div>
+                    </div>
+                </div>
+                <button class="btn btn-sm btn-outline-primary" id="place-order" type="submit">Place Order</button>
+                <button class="btn btn-sm btn-outline-secondary" id="add-row">Add More Products</button>
+            </form>
+        </div>
+    </div>
+</div> <!-- Container end-->
+
+<footer th:replace="snippets.html :: name_footer"></footer>
+
+<script th:src="@{/static/createorder.js}"/>
+</script>
+
+</body>
+
+</html>

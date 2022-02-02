@@ -27,6 +27,7 @@ public class ReportService {
 	private ProductService productService;
 
 	// Sales Report
+	@SuppressWarnings("deprecation")
 	@Transactional
 	public List<SalesReportData> getCategoryWiseSalesReport(String brand, String startingDate, String endingDate)
 			throws ApiException {

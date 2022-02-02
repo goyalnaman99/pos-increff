@@ -23,6 +23,10 @@ function handleAjaxError(response){
 	}
 	catch(error){
 		toastr.error("Internal Error");
+		toastr.options.closeButton = true;
+        toastr.options.timeOut = 0;
+        toastr.options.extendedTimeOut = 0;
+	    toastr.error(response.message);
 	}
 } // enclose in try catch
 

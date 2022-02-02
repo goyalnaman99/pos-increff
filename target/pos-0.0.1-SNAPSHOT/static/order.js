@@ -10,13 +10,15 @@ function addOrderItem(event) {
 	var json = toJson($form);
 	order.push(JSON.parse(json));
 	toastr.success("Order Item Added to Cart");
+	$("order-add-form").trigger("reset");
 	console.log(order);
 	displayOrderItemListAdd(order);
 }
 function cancelOrder(event) {
 	order = [];
 	toastr.warning("Cart Cleared");
-	$("#orderitemadd-table tr").remove();
+	$("order-add-form").trigger("reset");
+	$("#orderitemadd-table tbody").remove();
 }
 function addOrder(event) {
 	var url = getOrderUrl();
@@ -39,7 +41,7 @@ function addOrder(event) {
 			handleAjaxError(response)
 		}
 	});
-	$("#orderitemadd-table tr").remove();
+	$("#orderitemadd-table tbody").remove();
 	return false;
 }
 

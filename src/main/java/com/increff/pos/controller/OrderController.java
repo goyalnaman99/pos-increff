@@ -3,8 +3,6 @@ package com.increff.pos.controller;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.servlet.http.HttpServletResponse;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -113,8 +111,6 @@ public class OrderController {
 	@RequestMapping(path = "/api/order/item/{id}", method = RequestMethod.PUT)
 	public void update(@PathVariable int id, @RequestBody OrderItemForm f) throws ApiException {
 		ProductPojo productPojo = productService.get(f.getBarcode());
-		OrderItemPojo ex = orderService.get(id);
-		OrderPojo orderPojo = orderService.getOrder(ex.getOrderId());
 		OrderItemPojo orderItemPojo = ConversionUtil.convertOrderItemForm(f, productPojo);
 		orderService.update(id, orderItemPojo);
 	}

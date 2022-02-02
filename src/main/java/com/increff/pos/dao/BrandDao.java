@@ -13,7 +13,7 @@ public class BrandDao extends AbstractDao {
 
 	// Select all Brands
 	public List<BrandPojo> selectAll() {
-		TypedQuery<BrandPojo> query = getQuery("select p from BrandPojo p", BrandPojo.class);
+		TypedQuery<BrandPojo> query = getQuery("select p from BrandPojo p order by p.id desc", BrandPojo.class);
 		return query.getResultList();
 	}
 	

@@ -8,27 +8,17 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/increff/pos/controller/OrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/increff/pos/controller/OrderController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/increff/pos/service/OrderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/increff/pos/service/OrderService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/increff/pos/util/ConversionUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/increff/pos/util/ConversionUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/html/brand.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/html/brand.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/increff/pos/service/ReportService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/increff/pos/service/ReportService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/html/order.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/html/order.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/m2e-wtp/web-resources/META-INF/maven/com.increff/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/html/snippets.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/html/snippets.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/brand.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/static/brand.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/order.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/static/order.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/pos-0.0.1-SNAPSHOT/html/brand.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/pos-0.0.1-SNAPSHOT/html/brand.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/pos-0.0.1-SNAPSHOT/html/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/pos-0.0.1-SNAPSHOT/html/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/pos-0.0.1-SNAPSHOT/html/inventory.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/pos-0.0.1-SNAPSHOT/html/inventory.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/pos-0.0.1-SNAPSHOT/html/order.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/pos-0.0.1-SNAPSHOT/html/order.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/pos-0.0.1-SNAPSHOT/html/product.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/pos-0.0.1-SNAPSHOT/html/product.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/pos-0.0.1-SNAPSHOT/html/snippets.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/pos-0.0.1-SNAPSHOT/html/snippets.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/pos-0.0.1-SNAPSHOT/sample/brand.tsv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/pos-0.0.1-SNAPSHOT/sample/inventory.tsv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/pos-0.0.1-SNAPSHOT/sample/product.tsv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/pos-0.0.1-SNAPSHOT/static/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/pos-0.0.1-SNAPSHOT/static/app.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/pos-0.0.1-SNAPSHOT/static/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/pos-0.0.1-SNAPSHOT/static/app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/pos-0.0.1-SNAPSHOT/static/brand.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/pos-0.0.1-SNAPSHOT/static/brand.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/pos-0.0.1-SNAPSHOT/static/inventory.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/pos-0.0.1-SNAPSHOT/static/inventory.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/pos-0.0.1-SNAPSHOT/static/order.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/pos-0.0.1-SNAPSHOT/static/order.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/pos-0.0.1-SNAPSHOT/static/product.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/pos-0.0.1-SNAPSHOT/static/product.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,6 +61,34 @@
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.increff.pos.model" />
     </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="pos [mvn,jetty:run]" type="MavenRunConfiguration" factoryName="Maven" nameIsGenerated="true">
+      <MavenSettings>
+        <option name="myGeneralSettings" />
+        <option name="myRunnerSettings" />
+        <option name="myRunnerParameters">
+          <MavenRunnerParameters>
+            <option name="profiles">
+              <set />
+            </option>
+            <option name="goals">
+              <list>
+                <option value="mvn" />
+                <option value="jetty:run" />
+              </list>
+            </option>
+            <option name="pomFileName" />
+            <option name="profilesMap">
+              <map />
+            </option>
+            <option name="resolveToWorkspace" value="false" />
+            <option name="workingDirPath" value="$PROJECT_DIR$" />
+          </MavenRunnerParameters>
+        </option>
+      </MavenSettings>
+      <method v="2" />
+    </configuration>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">

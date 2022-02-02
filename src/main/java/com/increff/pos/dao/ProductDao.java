@@ -25,7 +25,7 @@ public class ProductDao extends AbstractDao {
 
 	// Select all products
 	public List<ProductPojo> selectAll() {
-		TypedQuery<ProductPojo> query = getQuery("select p from ProductPojo p order by p.name", ProductPojo.class);
+		TypedQuery<ProductPojo> query = getQuery("select p from ProductPojo p order by p.id desc", ProductPojo.class);
 		return query.getResultList();
 	}
 }

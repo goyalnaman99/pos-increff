@@ -40,7 +40,7 @@ public class OrderService {
 		for (OrderItemPojo p : orderItemList) {
 			ProductPojo productPojo = productService.get(p.getProductId());
 			if (productPojo == null) {
-				throw new ApiException("Product with barcode: " + productPojo.getBarcode() + " does not exist.");
+				throw new ApiException("Product does not exist.");
 			}
 			validate(p);
 			p.setOrderId(orderPojo.getId());

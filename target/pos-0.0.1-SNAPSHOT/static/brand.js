@@ -1,4 +1,3 @@
-
 function getBrandUrl() {
 	var baseUrl = $("meta[name=baseUrl]").attr("content")
 	return baseUrl + "/api/brand";
@@ -27,7 +26,6 @@ function addBrand(event) {
 			handleAjaxError(response)
 		}
 	});
-
 	return false;
 }
 
@@ -140,8 +138,8 @@ function displayBrandList(data) {
 	var no = 0;
 	for ( var i in data) {
 		var e = data[i];
-		var buttonHtml = ' <button type="button" class="btn text-bodye" onclick="displayEditBrand(' + e.id
-				+ ')"><i class="fas fa-pencil-alt"></i></button>'
+		var buttonHtml = ' <button type="button" class="btn text-bodye" onclick="displayEditBrand('
+				+ e.id + ')"><i class="fas fa-pencil-alt"></i></button>'
 		var row = '<tr>' + '<td>' + ++no + '</td>' + '<td>' + e.brand + '</td>'
 				+ '<td>' + e.category + '</td>' + '<td>' + buttonHtml + '</td>'
 				+ '</tr>';

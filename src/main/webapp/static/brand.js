@@ -1,4 +1,3 @@
-
 function getBrandUrl() {
 	var baseUrl = $("meta[name=baseUrl]").attr("content")
 	return baseUrl + "/api/brand";
@@ -7,6 +6,7 @@ function getBrandUrl() {
 // BUTTON ACTIONS
 function addBrand(event) {
 	// Set the values to update
+	event.preventDefault();
 	var $form = $("#brand-add-form");
 	var json = toJson($form);
 	var url = getBrandUrl();
@@ -27,7 +27,6 @@ function addBrand(event) {
 			handleAjaxError(response)
 		}
 	});
-
 	return false;
 }
 
@@ -93,8 +92,20 @@ function uploadRows() {
 	// Update progress
 	updateUploadDialog();
 	// If everything processed then return
-	if (processCount == fileData.length) {
-		toastr.success("File processed Successfully");
+	if (processCount == fileData.length && processCount > 0) {
+		if (errorData.length == 0) {
+			toastr.success("File uploaded successfully");
+		} else {
+			toastr.options.closeButton = true;
+	        toastr.options.timeOut = 0;
+	        toastr.options.extendedTimeOut = 0;
+			toastr.error("Uploaded with " + errorData.length + " errors");
+		}
+		getBrandList();
+		$("#error-data").show();
+		if (errorData.length == 0) {
+			$("#download-errors").hide();
+		}
 		return;
 	}
 
@@ -115,14 +126,11 @@ function uploadRows() {
 		},
 		success : function(response) {
 			uploadRows();
-			getBrandList();
-			toastr.success("File Uploaded Successfully");
 		},
 		error : function(response) {
 			row.error = response.responseText
 			errorData.push(row);
 			uploadRows();
-			toastr.error("File could not be uploaded");
 		}
 	});
 
@@ -140,8 +148,8 @@ function displayBrandList(data) {
 	var no = 0;
 	for ( var i in data) {
 		var e = data[i];
-		var buttonHtml = ' <button type="button" class="btn text-bodye" onclick="displayEditBrand(' + e.id
-				+ ')"><i class="fas fa-pencil-alt"></i></button>'
+		var buttonHtml = ' <button type="button" class="btn text-bodye" data-toggle="tooltip" title="Edit" onclick="displayEditBrand('
+				+ e.id + ')"><i class="fas fa-pencil-alt"></i></button>'
 		var row = '<tr>' + '<td>' + ++no + '</td>' + '<td>' + e.brand + '</td>'
 				+ '<td>' + e.category + '</td>' + '<td>' + buttonHtml + '</td>'
 				+ '</tr>';
@@ -206,12 +214,13 @@ function displayBrand(data) {
 // INITIALIZATION CODE
 function init() {
 	$('#add-brand').click(displayAddData);
-	$('#submit-add-brand').click(addBrand);
-	$('#update-brand').click(updateBrand);
+	$('#brand-add-form').submit(addBrand);
+	$('#brand-edit-form').submit(updateBrand);
 	$('#refresh-data').click(getBrandList);
 	$('#upload-data').click(displayUploadData);
 	$('#process-data').click(processData);
 	$('#download-errors').click(downloadErrors);
+	$("#error-data").hide();
 	$('#brandFile').on('change', updateFileName)
 }
 

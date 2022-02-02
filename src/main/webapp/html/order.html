@@ -23,10 +23,10 @@
             <table class="table table-striped" id="order-table">
                 <thead>
                 <tr>
-                    <th scope="col">Id</th>
-                    <th scope="col">Date-Time</th>
+                    <th scope="col">Order Id</th>
+                    <th scope="col">Order Time</th>
                     <th scope="col">Bill Amount</th>
-                    <th scope="col">Actions</th>
+                    <th scope="col">Action</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -41,14 +41,14 @@
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Add Order Item</h5>
+                <h5 class="modal-title">Add Order Items</h5>
                 <button aria-label="Close" class="close" data-dismiss="modal"
                         type="button">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                <form class id="order-add-form">
+                <form id="order-add-form">
                     <div class="form-group row">
                         <label class="col-sm-2 col-form-label" for="inputbarcode">Barcode</label>
                         <div class="col-sm-10">
@@ -75,7 +75,7 @@
                         <button class="btn btn-sm btn-outline-secondary" data-dismiss="modal"
                                 id="cancel-order" type="button">Cancel
                         </button>
-                        <button class="btn btn-sm btn-outline-primary" id="add-order" type="submit">Add</button>
+                        <button class="btn btn-sm btn-outline-primary" id="add-order" type="button">Add More Items</button>
                         <button class="btn btn-sm btn-outline-success" id="submit-order" type="submit">Submit</button>
                     </div>
                 </form>
@@ -93,6 +93,7 @@
                             <th scope="col">Barcode</th>
                             <th scope="col">Quantity</th>
                             <th scope="col">Selling Price</th>
+                            <th scope="col">Action</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -117,7 +118,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form class id="order-edit-form">
+                <form id="order-edit-form">
                     <div class="form-group row">
                         <label class="col-sm-2 col-form-label" for="inputbarcode">Barcode</label>
                         <div class="col-sm-10">
@@ -188,8 +189,7 @@
 <!-- Container end-->
 
 <footer th:replace="snippets.html :: name_footer"></footer>
-<script th:src="@{/static/order.js}"/>
-</script>
+<script th:src="@{/static/order.js}"></script>
 </body>
 
 </html>
