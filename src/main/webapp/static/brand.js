@@ -96,10 +96,11 @@ function uploadRows() {
 		if (errorData.length == 0) {
 			toastr.success("File uploaded successfully");
 		} else {
-			toastr.options.closeButton = true;
-	        toastr.options.timeOut = 0;
-	        toastr.options.extendedTimeOut = 0;
-			toastr.error("Uploaded with " + errorData.length + " errors");
+			toastr.error("Uploaded with " + errorData.length + " errors", "", {
+				"closeButton" : true,
+				"timeOut" : 0,
+				"extentedTimeOut" : 0
+			});
 		}
 		getBrandList();
 		$("#error-data").show();
@@ -205,6 +206,7 @@ function displayAddData() {
 }
 
 function displayBrand(data) {
+	console.log(data);
 	$("#brand-edit-form input[name=brand]").val(data.brand);
 	$("#brand-edit-form input[name=category]").val(data.category);
 	$("#brand-edit-form input[name=id]").val(data.id);

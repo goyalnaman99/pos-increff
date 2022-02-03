@@ -16,14 +16,14 @@ function toJson($form){
 function handleAjaxError(response){
 	try{
 		var response = JSON.parse(response.responseText);
-	    toastr.error(response.message, "error", {
+	    toastr.error(response.message, "", {
 	    	"closeButton" : true,
 	    	"timeOut" : 0,
 	    	"extentedTimeOut" : 0
 	    });
 	}
 	catch(error){
-		toastr.error("Internal Error", "error", {
+		toastr.error("Internal Error", "", {
 	    	"closeButton" : true,
 	    	"timeOut" : 0,
 	    	"extentedTimeOut" : 0

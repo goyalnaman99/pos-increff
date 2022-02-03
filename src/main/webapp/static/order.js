@@ -6,10 +6,12 @@ function getOrderUrl() {
 // BUTTON ACTIONS
 var order = [];
 function addOrderItem(event) {
+	event.preventDefault();
 	var $form = $("#order-add-form");
 	var json = toJson($form);
 	var orderItem = JSON.parse(json);
-	if(orderItem.barcode !== "" && orderItem.quantity >= 0 && orderItem.sellingPrice > 0)
+	
+	if(orderItem.quantity > 0 && orderItem.sellingPrice >= 0)
 	{
 		order.push(orderItem);
 		toastr.success("Order Item Added to Cart");
@@ -17,7 +19,14 @@ function addOrderItem(event) {
 		console.log(order);
 		displayOrderItemListAdd(order);
 	}
-	else {toastr.error("Please fill out all fields", "", {
+	else if(orderItem.quantity <= 0) {
+		toastr.error("Quantity should be positive", "", {
+    	"closeButton" : true,
+    	"timeOut" : 0,
+    	"extentedTimeOut" : 0
+    });}
+	else if(orderItem.sellingPrice < 0) {
+		toastr.error("Selling Price should be 0 or more", "", {
     	"closeButton" : true,
     	"timeOut" : 0,
     	"extentedTimeOut" : 0
@@ -93,7 +102,10 @@ function getInvoice(id) {
         type: 'GET',
         responseType: 'arraybuffer',
         success: function (response) {
-            var arrayBuffer = base64ToArrayBuffer(response); //data is the base64 encoded string
+            var arrayBuffer = base64ToArrayBuffer(response); // data is the
+																// base64
+																// encoded
+																// string
             function base64ToArrayBuffer(base64) {
                 var binaryString = window.atob(base64);
                 var binaryLen = binaryString.length;
@@ -173,9 +185,9 @@ function displayOrderList(data) {
 	$tbody.empty();
 	for ( var i in data) {
 		var e = data[i];
-		var buttonHtml = ' <button type="button" class="btn btn-sm btm-outline-primary" onclick="getOrderItemList('
+		var buttonHtml = ' <button type="button" class="btn btn-sm btn-outline-primary mx-1" onclick="getOrderItemList('
 				+ e.id + ')">View</button>'
-			buttonHtml += '<button type="button" class="btn btn-sm btm-outline-primary" data-toggle="tooltip" title="View/Edit" onclick="getInvoice('
+			buttonHtml += '<button type="button" class="btn btn-sm btn-outline-primary mx-1" onclick="getInvoice('
                             				+ e.id + ')">Download Invoice</button>'
 		var row = '<tr>' + '<td>' + e.id + '</td>' + '<td>' + e.datetime + '</td>'+ '<td>' + e.billAmount + '</td>' + '<td>' + buttonHtml
 				+ '</td>' + '</tr>';
@@ -227,7 +239,11 @@ function displayEditOrderItem(id) {
 }
 
 function displayOrderItemEdit(data) {
+	console.log(data);
 	$("#order-edit-form input[name=barcode]").val(data.barcode);
+	$("#barcode").html("" + data.barcode);
+	$("#mrp").html("" + data.mrp);
+	$("#availableQuantity").html("" + data.availableQuantity);
 	$("#order-edit-form input[name=quantity]").val(data.quantity);
 	$("#order-edit-form input[name=sellingPrice]").val(data.mrp);
 	$("#order-edit-form input[name=id]").val(data.id);
@@ -237,8 +253,8 @@ function displayOrderItemEdit(data) {
 
 // INITIALIZATION CODE
 function init() {
-	$('#add-order').click(addOrderItem)
-	$('#update-orderitem').click(updateOrderItem);
+	$('#order-add-form').submit(addOrderItem)
+	$('#order-edit-form').submit(updateOrderItem);
 	$('#cancel-order').click(cancelOrder)
 	$('#submit-order').click(addOrder)
 	$('#refresh-data').click(getOrderList);

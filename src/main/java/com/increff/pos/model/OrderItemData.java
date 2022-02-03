@@ -6,6 +6,7 @@ public class OrderItemData extends OrderItemForm {
 	private int orderId;
 	private String name;
 	private double mrp;
+	private int availableQuantity;
 
 	public int getId() {
 		return id;
@@ -39,4 +40,11 @@ public class OrderItemData extends OrderItemForm {
 		this.mrp = d;
 	}
 
+	public int getAvailableQuantity() {
+		return availableQuantity;
+	}
+
+	public void setAvailableQuantity(int availableQuantity) {
+		this.availableQuantity = availableQuantity;
+	}
 }

@@ -2,18 +2,16 @@
 package com.increff.pos.model;
 
 import javax.xml.bind.annotation.XmlRootElement;
-import java.util.Date;
 import java.util.List;
 
-@XmlRootElement(name="BillData")
+@XmlRootElement(name="billData")
 public class BillData {
 
     private int orderId;
     private List<OrderItemData> orderItemData;
-    private Date datetime;
+    private String datetime;
     private double billAmount;
-    private String name;
-
+    
     public int getOrderId() {
         return orderId;
     }
@@ -30,11 +28,11 @@ public class BillData {
         this.orderItemData = orderItemData;
     }
 
-    public Date getDatetime() {
+    public String getDatetime() {
         return datetime;
     }
 
-    public void setDatetime(Date datetime) {
+    public void setDatetime(String datetime) {
         this.datetime = datetime;
     }
 

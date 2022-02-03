@@ -113,7 +113,7 @@ public class ConversionUtil {
 	}
 
 	// Convert to OrderItem data
-	public static OrderItemData convert(OrderItemPojo orderItemPojo, ProductPojo productPojo, OrderPojo orderPojo) {
+	public static OrderItemData convert(OrderItemPojo orderItemPojo, ProductPojo productPojo, OrderPojo orderPojo, InventoryPojo inventoryPojo) {
 		OrderItemData d = new OrderItemData();
 		d.setId(orderItemPojo.getId());
 		d.setBarcode(productPojo.getBarcode());
@@ -121,7 +121,8 @@ public class ConversionUtil {
 		d.setOrderId(orderPojo.getId());
 		d.setName(productPojo.getName());
 		d.setSellingPrice(orderItemPojo.getSellingPrice());
-		d.setMrp(productPojo.getMrp());
+		d.setMrp(productPojo.getMrp()); 
+		d.setAvailableQuantity(inventoryPojo.getQuantity());
 		return d;
 	}
 }

@@ -12,8 +12,8 @@
             </fo:layout-master-set>
             <fo:page-sequence master-reference="A4">
                 <fo:static-content flow-name="xsl-region-before">
-                    <fo:block space-before="120pt" font-size="14pt" line-height="24px" background-color="#3e73b9" color="white">
-                        INCREFF INVOICE
+                    <fo:block space-before="120pt" font-size="14pt" line-height="24px" font-weight="bold">
+                        INVOICE
                     </fo:block>
                 </fo:static-content>
                 <fo:flow flow-name="xsl-region-body" space-before="120pt" margin-top="5in">

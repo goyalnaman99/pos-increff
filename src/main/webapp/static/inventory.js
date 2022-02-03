@@ -109,10 +109,11 @@ function uploadRows() {
 		if (errorData.length == 0) {
 			toastr.success("File uploaded successfully");
 		} else {
-			toastr.options.closeButton = true;
-			toastr.options.timeOut = 0;
-			toastr.options.extendedTimeOut = 0;
-			toastr.error("Uploaded with " + errorData.length + " errors");
+			toastr.error("Uploaded with " + errorData.length + " errors", "", {
+				"closeButton" : true,
+				"timeOut" : 0,
+				"extentedTimeOut" : 0
+			});
 		}
 		getInventoryList();
 		$("#error-data").show();

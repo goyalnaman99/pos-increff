@@ -170,12 +170,12 @@ public class OrderService {
 		if (p.getQuantity() <= 0) {
 			throw new ApiException("Quantity must be positive");
 		} else if (inventoryService.getByProductId(p.getProductId()).getQuantity() < p.getQuantity()) {
-			throw new ApiException("Available quantity for this product is: " + inventoryService.getByProductId(p.getProductId()).getQuantity());
+			throw new ApiException("Available quantity for product with barcode: " + productService.get(p.getProductId()).getBarcode() + " is: " + inventoryService.getByProductId(p.getProductId()).getQuantity());
 		}
 		
 		if(p.getSellingPrice() > p.getMrp())
 		{
-			throw new ApiException("SP can't be greater than MRP: " + p.getMrp());
+			throw new ApiException("SP for product with barcode: " + productService.get(p.getProductId()).getBarcode() + " can't be greater than MRP: " + p.getMrp());
 		}
 	}
 

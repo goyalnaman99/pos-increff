@@ -1,6 +1,8 @@
 package com.increff.pos.controller;
 
 import java.io.File;
+import java.nio.file.Files;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Base64;
 import java.util.List;
@@ -12,15 +14,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.nio.file.Files;
 import com.increff.pos.model.BillData;
 import com.increff.pos.model.OrderData;
 import com.increff.pos.model.OrderItemData;
 import com.increff.pos.model.OrderItemForm;
+import com.increff.pos.pojo.InventoryPojo;
 import com.increff.pos.pojo.OrderItemPojo;
 import com.increff.pos.pojo.OrderPojo;
 import com.increff.pos.pojo.ProductPojo;
 import com.increff.pos.service.ApiException;
+import com.increff.pos.service.InventoryService;
 import com.increff.pos.service.OrderService;
 import com.increff.pos.service.ProductService;
 import com.increff.pos.util.ConversionUtil;
@@ -38,6 +41,9 @@ public class OrderController {
 
 	@Autowired
 	private ProductService productService;
+	
+	@Autowired
+	private InventoryService inventoryService;
 
 	@ApiOperation(value = "Add Order Details")
 	@RequestMapping(path = "/api/order", method = RequestMethod.POST)
@@ -59,7 +65,8 @@ public class OrderController {
 		OrderItemPojo orderItemPojo = orderService.get(id);
 		ProductPojo productPojo = productService.get(orderItemPojo.getProductId());
 		OrderPojo orderPojo = orderService.getOrder(orderItemPojo.getOrderId());
-		return ConversionUtil.convert(orderItemPojo, productPojo, orderPojo);
+		InventoryPojo inventoryPojo = inventoryService.getByProductId(productPojo.getId());
+		return ConversionUtil.convert(orderItemPojo, productPojo, orderPojo, inventoryPojo);
 	}
 
 	@ApiOperation(value = "Get list of all Order Items")
@@ -70,7 +77,8 @@ public class OrderController {
 		for (OrderItemPojo orderItemPojo : orderItemPojo_list) {
 			ProductPojo productPojo = productService.get(orderItemPojo.getProductId());
 			OrderPojo orderPojo = orderService.getOrder(orderItemPojo.getOrderId());
-			d.add(ConversionUtil.convert(orderItemPojo, productPojo, orderPojo));
+			InventoryPojo inventoryPojo = inventoryService.getByProductId(productPojo.getId());
+			d.add(ConversionUtil.convert(orderItemPojo, productPojo, orderPojo, inventoryPojo));
 		}
 		return d;
 	}
@@ -84,15 +92,14 @@ public class OrderController {
 		List<OrderItemData> d = new ArrayList<OrderItemData>();
 		for (OrderItemPojo orderItemPojo : orderItemPojo_list) {
 			ProductPojo productPojo = productService.get(orderItemPojo.getProductId());
-			d.add(ConversionUtil.convert(orderItemPojo, productPojo, orderPojo));
+			InventoryPojo inventoryPojo = inventoryService.getByProductId(productPojo.getId());
+			d.add(ConversionUtil.convert(orderItemPojo, productPojo, orderPojo, inventoryPojo));
 		}
 		billData.setOrderItemData(d);
 		billData.setBillAmount(orderService.billTotal(orderId));
-		billData.setDatetime(orderPojo.getDate());
+		billData.setDatetime(new SimpleDateFormat("MM-dd-yyyy HH:mm:ss").format(orderPojo.getDate()));
 		billData.setOrderId(orderId);
-
 		//orderService.updateInvoice(orderId);
-
 		PDFUtils.generatePDFFromJavaObject(billData);
 		File file = new File("invoice.pdf");
 		byte[] contents = Files.readAllBytes(file.toPath());
@@ -119,7 +126,8 @@ public class OrderController {
 		for (OrderItemPojo orderItemPojo : orderItemPojo_list) {
 			ProductPojo productPojo = productService.get(orderItemPojo.getProductId());
 			OrderPojo orderPojo = orderService.getOrder(orderItemPojo.getOrderId());
-			d.add(ConversionUtil.convert(orderItemPojo, productPojo, orderPojo));
+			InventoryPojo inventoryPojo = inventoryService.getByProductId(productPojo.getId());
+			d.add(ConversionUtil.convert(orderItemPojo, productPojo, orderPojo, inventoryPojo));
 		}
 		return d;
 	}

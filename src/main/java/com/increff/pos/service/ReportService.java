@@ -50,15 +50,16 @@ public class ReportService {
 			List<OrderItemPojo> orderItemListTemp = orderService.getOrderItems(order.getId());
 			orderItemList.addAll(orderItemListTemp);
 		}
-
+		
+		//Getting all products of all order items
 		List<ProductPojo> productList = new ArrayList<ProductPojo>();
 		for (OrderItemPojo orderItem : orderItemList) {
 			ProductPojo product = productService.get(orderItem.getProductId());
 			productList.add(product);
 		}
-
+		
 		for (BrandPojo brandCategory : brandCategoryList) {
-			SalesReportData salesReportItemDataItem = new SalesReportData(brandCategory, 0, 0.00);
+			SalesReportData salesReportItemDataItem = new SalesReportData(brandCategory, 0, 0.00); //initialization
 			salesReportData.add(salesReportItemDataItem);
 		}
 

@@ -23,8 +23,6 @@ import org.apache.fop.apps.Fop;
 import org.apache.fop.apps.FopFactory;
 import org.apache.fop.apps.MimeConstants;
 
-import com.increff.pos.model.OrderItemData;
-
 public class PDFUtils {
 
     public static void generatePDFFromJavaObject(BillData billData) throws Exception {
@@ -38,7 +36,7 @@ public class PDFUtils {
         JAXBContext context;
         ByteArrayOutputStream outStream = new ByteArrayOutputStream();
         try {
-            context = JAXBContext.newInstance(OrderItemData.class);
+            context = JAXBContext.newInstance(BillData.class);
             Marshaller marshaller = context.createMarshaller();
             marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
             marshaller.marshal(billData, outStream);
