@@ -167,8 +167,8 @@ public class OrderService {
 
 	// Validation of order item
 	private void validate(OrderItemPojo p) throws ApiException {
-		if (p.getQuantity() <= 0) {
-			throw new ApiException("Quantity must be positive");
+		if (p.getQuantity() < 0) {
+			throw new ApiException("Quantity must be positive or 0 if you want to cancel order");
 		} else if (inventoryService.getByProductId(p.getProductId()).getQuantity() < p.getQuantity()) {
 			throw new ApiException("Available quantity for product with barcode: " + productService.get(p.getProductId()).getBarcode() + " is: " + inventoryService.getByProductId(p.getProductId()).getQuantity());
 		}

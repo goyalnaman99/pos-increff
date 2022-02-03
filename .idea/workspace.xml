@@ -6,16 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="0ba18197-5437-4f8e-bc17-00bd279dcbc2" name="Changes" comment="POS">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/invoice.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/invoice.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/increff/pos/controller/OrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/increff/pos/controller/OrderController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/increff/pos/model/BillData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/increff/pos/model/BillData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/increff/pos/model/OrderItemData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/increff/pos/model/OrderItemData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/increff/pos/model/OrderItemForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/increff/pos/model/OrderItemForm.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/increff/pos/util/PDFUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/increff/pos/util/PDFUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/html/report.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/html/report.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/brand.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/static/brand.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/increff/pos/service/OrderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/increff/pos/service/OrderService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/static/app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/static/order.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/static/order.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/template.xsl" beforeDir="false" afterPath="$PROJECT_DIR$/template.xsl" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

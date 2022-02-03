@@ -200,9 +200,7 @@ function displayOrderItem(data) {
 	$tbody.empty();
 	for ( var i in data) {
 		var e = data[i];
-		var buttonHtml = ' <button type="button" class="btn text-bodye" data-toggle="tooltip" title="Delete" onclick="deleteOrderItem('
-				+ e.id + ')"><i class="fas fa-trash-alt"></i></button>'
-		buttonHtml += ' <button type="button" class="btn text-bodye" data-toggle="tooltip" title="Edit" onclick="displayEditOrderItem('
+		var buttonHtml = ' <button type="button" class="btn text-bodye" data-toggle="tooltip" title="Edit" onclick="displayEditOrderItem('
 				+ e.id + ')"><i class="fas fa-pencil-alt"></i></button>'
 		var row = '<tr>' + '<td>' + e.name + '</td>' + '<td>' + e.barcode
 				+ '</td>' + '<td>' + e.quantity + '</td>' + '<td>'

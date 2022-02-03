@@ -56,12 +56,12 @@ function writeFileData(arr){
     var fileUrl =  null;
 
     if (navigator.msSaveBlob) {
-        fileUrl = navigator.msSaveBlob(blob, 'download.tsv');
+        fileUrl = navigator.msSaveBlob(blob, 'errors.tsv');
     } else {
         fileUrl = window.URL.createObjectURL(blob);
     }
     var tempLink = document.createElement('a');
     tempLink.href = fileUrl;
-    tempLink.setAttribute('download', 'download.tsv');
+    tempLink.setAttribute('download', 'errors.tsv');
     tempLink.click(); 
 }
